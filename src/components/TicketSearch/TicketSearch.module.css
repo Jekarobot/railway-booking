@@ -1,0 +1,87 @@
+.wideForm {
+  width: 729px; /* Ширина прямоугольника */
+  height: 574px; /* Высота прямоугольника */
+  background-color: #292929cc; /* Цвет фона */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 50px 20px 50px 20px;
+  justify-content: space-evenly;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: row;
+}
+
+.formTitle {
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 35px;
+
+  color: #ffffff;
+  text-align: start;
+  padding-left: 10px;
+
+  margin-bottom: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.inputField {
+  width: 325px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 21px;
+  box-sizing: border-box;
+}
+
+.inputIcon {
+  position: relative;
+  right: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  color: #e5e5e5;
+}
+
+.reverseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0;
+  position: absolute;
+  margin: 17px 332px;
+}
+
+.searchButton {
+  background-color: #ffa800;
+  width: 320px;
+  height: 60px;
+  border-radius: 5px;
+  position: relative;
+  left: 355px;
+  top: 50px;
+
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #292929;
+}
+
+.searchButton:active {
+  background-color: transparent;
+  border: #ffa800 1px solid;
+  color: #ffa800;
+}

@@ -1,0 +1,40 @@
+.feedbackCard {
+  display: flex;
+  gap: 35px;
+  padding-right: 50px;
+}
+
+.feedbackCard__content__user {
+  font-weight: 500;
+  font-size: 24px;
+
+  color: #000000;
+}
+
+.feedbackCard__content__text {
+  font-size: 18px;
+  color: #928f94;
+  font-style: italic;
+  margin-top: 30px;
+  position: relative;
+}
+
+.feedbackCard__content__text::after,
+.feedbackCard__content__text::before {
+  font-size: 48px;
+  color: #7a7a7a;
+  line-height: 1px;
+}
+
+.feedbackCard__content__text::before {
+  content: '“';
+  top: 20px;
+  left: -30px;
+  position: absolute;
+}
+
+.feedbackCard__content__text::after {
+  content: '”';
+  bottom: -35px;
+  position: relative;
+}

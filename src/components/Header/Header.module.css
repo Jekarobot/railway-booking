@@ -1,0 +1,37 @@
+.logoContainer {
+  height: 64px;
+  background-color: #00000099;
+  display: flex;
+}
+
+.logo {
+  cursor: pointer;
+  margin: 15px 258px;
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #292929;
+  height: 94px;
+}
+
+.navList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 258px;
+  gap: 83px;
+}
+
+.navLink {
+  color: white;
+  font-weight: 200;
+  font-size: 30px;
+  font-style: normal;
+  line-height: 35px;
+}

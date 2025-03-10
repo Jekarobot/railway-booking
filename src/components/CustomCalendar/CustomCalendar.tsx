@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Calendar, { CalendarProps } from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
-import './CustomCalendar.module.css'
 import styles from './CustomCalendar.module.css'
 
 interface CustomCalendarProps {
@@ -10,6 +9,16 @@ interface CustomCalendarProps {
 }
 
 const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange }) => {
+  const [activeStartDate, setActiveStartDate] = useState(new Date())
+
+  const handlePrevClick = () => {
+    setActiveStartDate(new Date(activeStartDate.setMonth(activeStartDate.getMonth() - 1)))
+  }
+
+  const handleNextClick = () => {
+    setActiveStartDate(new Date(activeStartDate.setMonth(activeStartDate.getMonth() + 1)))
+  }
+
   const getTileClassName = ({ date, view }: { date: Date; view: string }) => {
     if (view === 'month') {
       if (date.getDay() === 0) {
@@ -31,23 +40,36 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange }) => {
 
   return (
     <div className={styles.calendarContainer}>
+      <div className={styles.customNavigation}>
+        <button onClick={handlePrevClick} className={styles.customArrow}>
+          🢐
+        </button>
+        <span className={styles.customNavigationLabel}>
+          {activeStartDate.toLocaleString('default', { month: 'long' })}
+        </span>
+        <button onClick={handleNextClick} className={styles.customArrow}>
+          🢒
+        </button>
+      </div>
       <Calendar
         onChange={onChange}
         value={value}
         defaultView="month"
         className={styles.reactCalendar}
+        activeStartDate={activeStartDate}
+        onActiveStartDateChange={({ activeStartDate }) => {
+          if (activeStartDate) {
+            setActiveStartDate(activeStartDate)
+          }
+        }}
         prev2Label={null}
         next2Label={null}
-        prevLabel={<span className={styles.customArrow}>🢐</span>}
-        nextLabel={<span className={styles.customArrow}>🢒</span>}
         formatShortWeekday={() => ''}
         formatMonthYear={(locale, date) => date.toLocaleString(locale, { month: 'long' })}
-        navigationLabel={({ label }) => (
-          <span className={styles.customNavigationLabel}>{label}</span>
-        )}
         tileClassName={getTileClassName}
         minDetail="month"
         maxDetail="month"
+        showNavigation={false}
       />
     </div>
   )

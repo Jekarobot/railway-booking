@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
+import Results from './pages/Results/Results'
 import './styles/global.css'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <Router basename="/railway-booking/">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/results" element={<Results />} />
       </Routes>
     </Router>
   )

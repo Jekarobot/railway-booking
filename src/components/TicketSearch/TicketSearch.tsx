@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './TicketSearch.module.css'
 import Reverse from '../../assets/svg/Reverse.svg'
 import LocationIcon from '../../assets/svg/Location.svg'
@@ -14,6 +15,7 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
   const [endDate, setEndDate] = useState<Date | null>(null)
   const [showStartCalendar, setShowStartCalendar] = useState(false)
   const [showEndCalendar, setShowEndCalendar] = useState(false)
+  const navigate = useNavigate()
 
   const toggleStartCalendar = () => {
     setShowStartCalendar((prev) => !prev)
@@ -21,6 +23,10 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
 
   const toggleEndCalendar = () => {
     setShowEndCalendar((prev) => !prev)
+  }
+
+  const handleSearchClick = () => {
+    navigate('/results')
   }
 
   return (
@@ -86,7 +92,12 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
           </div>
         </div>
       </div>
-      <button className={styles.searchButton}>Найти билеты</button>
+      <button
+        className={`${styles.searchButton} ${isWide ? undefined : styles.searchButtonNarrow}`}
+        onClick={handleSearchClick}
+      >
+        Найти билеты
+      </button>
     </div>
   )
 }

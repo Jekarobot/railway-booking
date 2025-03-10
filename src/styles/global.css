@@ -51,3 +51,9 @@ input[type='date'] {
   -moz-appearance: none;
   appearance: none;
 }
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

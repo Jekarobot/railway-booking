@@ -1,12 +1,22 @@
 .wideForm {
-  width: 729px; /* Ширина прямоугольника */
-  height: 574px; /* Высота прямоугольника */
-  background-color: #292929cc; /* Цвет фона */
+  width: 729px;
+  height: 574px;
+  background-color: #292929cc;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 50px 20px 50px 20px;
   justify-content: space-evenly;
+}
+
+.narrowForm {
+  background-color: #292929cc;
+  width: 1490px;
+  height: 320px;
+  display: flex;
+  padding: 50px 20px 50px 40px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .formGroup {
@@ -59,7 +69,7 @@
   cursor: pointer;
   margin: 10px 0;
   position: absolute;
-  margin: 17px 332px;
+  margin: 17px 328px;
 }
 
 .searchButton {
@@ -84,4 +94,9 @@
   background-color: transparent;
   border: #ffa800 1px solid;
   color: #ffa800;
+}
+
+.searchButtonNarrow {
+  left: 1065px;
+  top: 20px;
 }

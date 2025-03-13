@@ -1,0 +1,80 @@
+.PriceFilter {
+  padding: 35px 33px 100px 33px;
+  border-bottom: #e5e5e5 1px solid;
+}
+
+.priceFilter__title {
+  font-weight: 400;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.priceFilter__text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  display: flex;
+
+  justify-content: space-between;
+  margin-bottom: -15px;
+}
+
+.priceFilter__currentMinValue,
+.priceFilter__currentMaxValue {
+  position: absolute;
+  transform: translateX(-50%);
+  top: 55px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #e5e5e5;
+}
+
+:global(.price-filter .rc-slider) {
+  width: 300px;
+}
+
+:global(.price-filter .rc-slider .rc-slider-track) {
+  background-color: #ffa800;
+  height: 6px;
+  border: #c4c4c4 1px solid;
+  height: 19px;
+}
+
+:global(.price-filter .rc-slider .rc-slider-handle) {
+  border: none;
+  width: 24px;
+  height: 24px;
+  margin-top: -3px;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+:global(.price-filter .rc-slider .rc-slider-rail) {
+  background-color: inherit;
+  height: 19px;
+  border: #c4c4c4 1px solid;
+}
+
+.priceFilter__values {
+  position: relative;
+  height: 20px;
+  margin-top: -36px;
+}
+
+.priceFilter__minValue {
+  position: absolute;
+  top: 39px;
+  left: -4px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #e5e5e5;
+}
+
+.priceFilter__maxValue {
+  position: absolute;
+  top: 39px;
+  left: 276px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #e5e5e5;
+}

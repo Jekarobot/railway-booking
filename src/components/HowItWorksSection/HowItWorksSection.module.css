@@ -1,7 +1,7 @@
 .home__howItWorks {
   width: 100%;
   height: 575px;
-  background: #74510d url('../../../../assets/howItWorks.jpg') center/cover no-repeat;
+  background: #74510d url('../../assets/howItWorks.jpg') center/cover no-repeat;
   background-blend-mode: overlay;
   margin-top: 107px;
   padding-top: 69px;

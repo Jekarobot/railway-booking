@@ -6,9 +6,10 @@ import styles from './CustomCalendar.module.css'
 interface CustomCalendarProps {
   value: Date | [Date, Date] | null
   onChange: CalendarProps['onChange']
+  isAside?: boolean
 }
 
-const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange }) => {
+const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange, isAside }) => {
   const [activeStartDate, setActiveStartDate] = useState(new Date())
 
   const handlePrevClick = () => {
@@ -39,7 +40,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange }) => {
   }
 
   return (
-    <div className={styles.calendarContainer}>
+    <div className={isAside ? styles.asideCalendarContainer : styles.calendarContainer}>
       <div className={styles.customNavigation}>
         <button onClick={handlePrevClick} className={styles.customArrow}>
           🢐

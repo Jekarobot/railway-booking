@@ -2,9 +2,9 @@ import styles from './Home.module.css'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import TicketSearch from '../../components/TicketSearch/TicketSearch'
-import AboutSection from './components/AboutSection/AboutSection'
-import HowItWorksSection from './components/HowItWorksSection/HowItWorksSection'
-import FeedbackSection from './components/FeedbackSection/FeedbackSection'
+import AboutSection from '../../components/AboutSection/AboutSection'
+import HowItWorksSection from '../../components/HowItWorksSection/HowItWorksSection'
+import FeedbackSection from '../../components/FeedbackSection/FeedbackSection'
 
 const Home = () => {
   return (

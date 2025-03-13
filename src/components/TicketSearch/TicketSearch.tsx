@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './TicketSearch.module.css'
-import Reverse from '../../assets/svg/Reverse.svg'
-import LocationIcon from '../../assets/svg/Location.svg'
-import CalendarIcon from '../../assets/svg/Calendar.svg'
+import Reverse from '../../assets/svg/TicketSearch/Reverse.svg'
+import LocationIcon from '../../assets/svg/TicketSearch/Location.svg'
+import CalendarIcon from '../../assets/svg/TicketSearch/Calendar.svg'
 import CustomCalendar from '../CustomCalendar/CustomCalendar'
 
 interface TicketSearchProps {

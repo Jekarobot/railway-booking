@@ -12,6 +12,8 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
+    "rc-slider": "^11.1.8",
     "react": "^19.0.0",
     "react-calendar": "^5.1.0",
     "react-dom": "^19.0.0",

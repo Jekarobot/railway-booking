@@ -1,0 +1,52 @@
+.filterAside__switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  align-self: center;
+}
+
+.filterAside__switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.filterAside__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 7px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  transition: 0.4s;
+  border-radius: 34px;
+  width: 72px;
+  height: 19px;
+}
+
+.filterAside__slider:before {
+  position: absolute;
+  content: '';
+  height: 28px;
+  width: 28px;
+  left: -4px;
+  bottom: -4px;
+  background-color: #c4c4c4;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .filterAside__slider {
+  background-color: #fcdc9d;
+}
+
+input:checked + .filterAside__slider:before {
+  transform: translateX(50px);
+  background-color: #ffa800;
+}

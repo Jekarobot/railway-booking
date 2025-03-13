@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import TicketSearch from '../../components/TicketSearch/TicketSearch'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
+import FilterAside from '../../components/FilterAside/FilterAside'
 
 const Results: React.FC = () => {
   const [step, setStep] = useState(1)
@@ -12,12 +13,12 @@ const Results: React.FC = () => {
     switch (step) {
       case 1: {
         return (
-          <div className={styles.step1}>
-            <aside className={styles.step1__aside}>
-              {/* <FilterAside /> */}
+          <div className={`${styles.step1} ${styles.step}`}>
+            <aside className={`${styles.step1__aside} ${styles.aside}`}>
+              <FilterAside />
               {/* <LastTickets /> */}
             </aside>
-            <main className={styles.step1__main}>{/* <TicketsList /> */}</main>
+            <main className={`${styles.step1__main} ${styles.main}`}>{/* <TicketsList /> */}</main>
           </div>
         )
       }

@@ -1,0 +1,6 @@
+.filterAside__groupFilters {
+  padding: 30px 35px 25px 68px;
+  border-bottom: #e5e5e5 1px solid;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,7 +1,7 @@
 import styles from './HowItWorksSection.module.css'
-import PC from '../../../../assets/svg/PC.svg'
-import Building from '../../../../assets/svg/Building.svg'
-import World from '../../../../assets/svg/World.svg'
+import PC from '../../assets/svg/HowItWorks/PC.svg'
+import Building from '../../assets/svg/HowItWorks/Building.svg'
+import World from '../../assets/svg/HowItWorks/World.svg'
 
 const AboutSection = () => {
   return (

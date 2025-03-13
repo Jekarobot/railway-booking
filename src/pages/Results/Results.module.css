@@ -3,40 +3,20 @@
   flex-direction: column;
 }
 
-.tickets__header {
+.header {
   position: relative;
   text-align: center;
-  background: rgba(0, 0, 0, 0.2) url('../../assets/results-bg.jpg') center/cover no-repeat;
+  background: rgba(0, 0, 0, 0.2) url('../../shared/assets/results-bg.jpg') center/cover no-repeat;
   background-blend-mode: overlay;
   width: 100%;
   height: 600px;
 }
 
-.tickets__headerContent {
+.headerContent {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 122px;
-}
-
-.step {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 100px 13% 150px 13%;
-  gap: 4.15%;
-}
-
-.aside {
-  width: 365px;
-  height: 1000px;
-}
-
-.main {
-  background-color: green;
-  width: 960px;
-  height: 1500px;
 }

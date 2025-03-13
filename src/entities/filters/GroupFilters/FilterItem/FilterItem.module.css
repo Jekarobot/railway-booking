@@ -1,0 +1,15 @@
+.option {
+  display: flex;
+  gap: 34px;
+}
+
+.name {
+  width: 102px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.img {
+  width: 20px;
+}

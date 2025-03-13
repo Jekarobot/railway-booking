@@ -10,4 +10,9 @@ export default defineConfig({
       localsConvention: 'camelCase',
     },
   },
+  build: {
+    rollupOptions: {
+      input: '/src/app/main.tsx',
+    },
+  },
 })

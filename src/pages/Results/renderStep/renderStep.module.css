@@ -1,0 +1,19 @@
+.step {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 100px 13% 150px 13%;
+  gap: 4.15%;
+}
+
+.aside {
+  width: 365px;
+  height: 1000px;
+}
+
+.main {
+  background-color: green;
+  width: 960px;
+  height: 1500px;
+}

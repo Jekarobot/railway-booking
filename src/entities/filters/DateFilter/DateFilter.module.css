@@ -1,0 +1,38 @@
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0 37px 0 37px;
+}
+
+.header {
+  font-size: 30px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.inputField {
+  width: 295px;
+  height: 43px;
+  background: #ffffff;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 21px;
+  box-sizing: border-box;
+}
+
+.inputIcon {
+  position: relative;
+  right: -255px;
+  top: 50%;
+  transform: translateY(-125%);
+  width: 30px;
+  height: 30px;
+  color: #e5e5e5;
+}
+
+.groupDate {
+  border-bottom: #e5e5e5 1px solid;
+}

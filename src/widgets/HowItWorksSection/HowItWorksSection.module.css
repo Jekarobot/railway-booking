@@ -1,0 +1,75 @@
+.howItWorks {
+  width: 100%;
+  height: 575px;
+  background: #74510d url('../../shared/assets/howItWorks.jpg') center/cover no-repeat;
+  background-blend-mode: overlay;
+  margin-top: 107px;
+  padding-top: 69px;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 729px;
+}
+
+.head__header {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.head__btn {
+  border: #ffffff 1px solid;
+  background-color: transparent;
+  border-radius: 5px;
+
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 24px;
+  padding: 16px 77px;
+}
+
+.head__btn:hover {
+  background-color: #ffa800;
+  color: black;
+}
+
+.head__btn:active {
+  background-color: #ffffff;
+  color: black;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 107px;
+  gap: 109px;
+}
+
+.content__group__icon {
+  width: 162px;
+  height: 162px;
+}
+
+.content__group {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 226px;
+  align-items: center;
+}
+
+.content__group__text {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #e5e5e5;
+}

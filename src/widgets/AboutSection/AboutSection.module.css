@@ -1,0 +1,39 @@
+.about {
+  margin-top: 144px;
+  margin-left: 258px;
+  margin-right: 258px;
+}
+
+.aboutHeading {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  text-transform: uppercase;
+
+  color: #292929;
+}
+
+.aboutTextBlock {
+  border-left: 8px solid #ffa800;
+  padding-left: 20px;
+}
+
+.aboutText {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #292929;
+}
+
+.aboutTextFat {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #292929;
+}

@@ -1,33 +1,33 @@
 import styles from './Home.module.css'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import TicketSearch from '../../components/TicketSearch/TicketSearch'
-import AboutSection from '../../components/AboutSection/AboutSection'
-import HowItWorksSection from '../../components/HowItWorksSection/HowItWorksSection'
-import FeedbackSection from '../../components/FeedbackSection/FeedbackSection'
+import Header from '../../shared/ui/Header/Header'
+import Footer from '../../shared/ui/Footer/Footer'
+import TicketSearch from '../../feautures/TicketSearch/TicketSearch'
+import AboutSection from '../../widgets/AboutSection/AboutSection'
+import HowItWorksSection from '../../widgets/HowItWorksSection/HowItWorksSection'
+import FeedbackSection from '../../widgets/FeedbackSection/FeedbackSection'
 
 const Home = () => {
   return (
     <div className={styles.home}>
-      <header className={styles.home__header}>
+      <header className={styles.header}>
         <Header />
-        <div className={styles.home__headerContent}>
-          <div className={styles.home__headingContainer}>
-            <h1 className={styles.home__firstHeading}>Вся жизнь - </h1>
-            <h1 className={styles.home__secondHeading}>путешествие!</h1>
+        <div className={styles.headerContent}>
+          <div className={styles.headingContainer}>
+            <h1 className={styles.firstHeading}>Вся жизнь - </h1>
+            <h1 className={styles.secondHeading}>путешествие!</h1>
           </div>
           <TicketSearch isWide />
         </div>
-        <div className={styles.home__loading}></div>
+        <div className={styles.loading}></div>
       </header>
-      <main className={styles.home__main}>
-        <section className={styles.home__container} id="about">
+      <main className={styles.main}>
+        <section className={styles.container} id="about">
           <AboutSection />
         </section>
 
         <HowItWorksSection />
 
-        <section className={styles.home__container} id="feedback">
+        <section className={styles.container} id="feedback">
           <FeedbackSection />
         </section>
       </main>

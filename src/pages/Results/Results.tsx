@@ -1,41 +1,25 @@
 import React, { useState } from 'react'
 import styles from './Results.module.css'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import TicketSearch from '../../components/TicketSearch/TicketSearch'
-import ProgressBar from '../../components/ProgressBar/ProgressBar'
-import FilterAside from '../../components/FilterAside/FilterAside'
+import Header from '../../shared/ui/Header/Header'
+import Footer from '../../shared/ui/Footer/Footer'
+import TicketSearch from '../../feautures/TicketSearch/TicketSearch'
+import ProgressBar from '../../shared/ui/ProgressBar/ProgressBar'
+import RenderStep from './renderStep/renderStep'
 
 const Results: React.FC = () => {
   const [step, setStep] = useState(1)
 
-  const renderStep = () => {
-    switch (step) {
-      case 1: {
-        return (
-          <div className={`${styles.step1} ${styles.step}`}>
-            <aside className={`${styles.step1__aside} ${styles.aside}`}>
-              <FilterAside />
-              {/* <LastTickets /> */}
-            </aside>
-            <main className={`${styles.step1__main} ${styles.main}`}>{/* <TicketsList /> */}</main>
-          </div>
-        )
-      }
-    }
-  }
-
   return (
     <div className={styles.results}>
-      <header className={styles.tickets__header}>
+      <header className={styles.header}>
         <Header />
-        <div className={styles.tickets__headerContent}>
-          <div className={styles.tickets__headingContainer}></div>
+        <div className={styles.headerContent}>
+          <div className={styles.headingContainer}></div>
           <TicketSearch isWide={false} />
         </div>
       </header>
       <ProgressBar activeStep={step} setActiveStep={setStep} />
-      {renderStep()}
+      <RenderStep step={step} />
       <Footer />
     </div>
   )

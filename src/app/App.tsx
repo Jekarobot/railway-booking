@@ -5,7 +5,7 @@ import '../shared/styles/global.css'
 
 function App() {
   return (
-    <Router basename="/railway-booking/">
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<Results />} />

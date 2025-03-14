@@ -6,7 +6,7 @@ interface ProgressBarProps {
   setActiveStep: (step: number) => void
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ activeStep, setActiveStep }) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({ activeStep }) => {
   return (
     <div className={styles.progressBar}>
       <div className={`${styles.step} ${styles.step1} ${activeStep >= 1 ? styles.active : ''}`}>

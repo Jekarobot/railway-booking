@@ -1,0 +1,17 @@
+.LastTickets {
+  width: 380px;
+  height: 580px;
+  box-sizing: border-box;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 30px;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}

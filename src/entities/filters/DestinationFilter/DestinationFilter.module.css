@@ -1,0 +1,53 @@
+.DestinationFilter {
+  padding: 35px 33px 35px 33px;
+  border-bottom: #e5e5e5 1px solid;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+}
+
+.text {
+  font-weight: 700;
+  font-size: 30px;
+  color: #ffffff;
+  position: relative;
+  left: 12px;
+  width: 120px;
+}
+
+.toggleBtn {
+  position: relative;
+  left: 140px;
+  width: 20px;
+  height: 20px;
+  font-size: 30px;
+  color: #c4c4c4;
+  border: 2px #c4c4c4 solid;
+  border-radius: 5px;
+  display: flex;
+  align-self: center;
+  padding: 1px;
+}
+
+.iconButton {
+  width: 14px;
+  height: 14px;
+}
+
+.sliders {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.slidersHidden {
+  display: none;
+}
+
+.sliderContainer {
+  margin-top: 10px;
+}

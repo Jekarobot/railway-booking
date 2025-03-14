@@ -1,4 +1,4 @@
-import Slider from '../../../../feautures/Slider/Slider'
+import Slider from '../../../../features/Slider/Slider'
 import styles from './FilterItem.module.css'
 
 interface FilterItemProps {

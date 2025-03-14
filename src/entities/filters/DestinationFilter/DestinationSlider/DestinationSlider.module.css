@@ -1,24 +1,3 @@
-.PriceFilter {
-  padding: 35px 33px 100px 33px;
-  border-bottom: #e5e5e5 1px solid;
-}
-
-.title {
-  font-weight: 400;
-  font-size: 30px;
-  color: #ffffff;
-}
-
-.text {
-  font-size: 18px;
-  font-weight: 400;
-  color: #ffffff;
-  display: flex;
-
-  justify-content: space-between;
-  margin-bottom: -15px;
-}
-
 .currentMinValue,
 .currentMaxValue {
   position: absolute;
@@ -29,30 +8,30 @@
   color: #e5e5e5;
 }
 
-:global(.price-filter .rc-slider) {
+:global(.DestinationSlider .rc-slider) {
   width: 300px;
 }
 
-:global(.price-filter .rc-slider .rc-slider-track) {
+:global(.DestinationSlider .rc-slider .rc-slider-track) {
   background-color: #ffa800;
   height: 6px;
   border: #c4c4c4 1px solid;
-  height: 19px;
+  height: 10px;
 }
 
-:global(.price-filter .rc-slider .rc-slider-handle) {
+:global(.DestinationSlider .rc-slider .rc-slider-handle) {
   border: none;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   margin-top: -3px;
   background-color: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
 
-:global(.price-filter .rc-slider .rc-slider-rail) {
+:global(.DestinationSlider .rc-slider .rc-slider-rail) {
   background-color: inherit;
-  height: 19px;
+  height: 10px;
   border: #c4c4c4 1px solid;
 }
 
@@ -77,5 +56,17 @@
   left: 276px;
   font-weight: 400;
   font-size: 16px;
+  color: #e5e5e5;
+}
+
+.textDeparture {
+  font-weight: 400;
+  font-size: 24px;
+  color: #e5e5e5;
+}
+
+.textArrival {
+  font-weight: 400;
+  font-size: 24px;
   color: #e5e5e5;
 }

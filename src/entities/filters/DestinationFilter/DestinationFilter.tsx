@@ -1,38 +1,46 @@
 import React, { useState } from 'react'
-import Slider from 'rc-slider'
-import 'rc-slider/assets/index.css'
-import classNames from 'classnames'
+import DestinationSlider from './DestinationSlider/DestinationSlider'
 import styles from './DestinationFilter.module.css'
+import classNames from 'classnames'
+import plus from '../../../shared/assets/svg/Aside/Plus.svg'
+import minus from '../../../shared/assets/svg/Aside/Minus.svg'
 
 interface DestinationFilterProps {
-  id: string
-  name: string
   icon: string
-  initialMin: number
-  initialMax: number
-  isLeave: boolean
+  isBack: boolean
 }
 
-const DestinationFilter: React.FC<DestinationFilterProps> = ({
-  id,
-  name,
-  icon,
-  initialMin,
-  initialMax,
-  isLeave,
-}) => {
-  const [currentMin, setCurrentMin] = useState(initialMin)
-  const [currentMax, setCurrentMax] = useState(initialMax)
+const DestinationFilter: React.FC<DestinationFilterProps> = ({ icon, isBack }) => {
+  const [currentDisplay, setCurrentDisplay] = useState(false)
 
-  const onChange = (value: number | number[]) => {
-    if (Array.isArray(value)) {
-      setCurrentMin(value[0])
-      setCurrentMax(value[1])
+  const toggleDisplay = () => {
+    if (currentDisplay === true) {
+      setCurrentDisplay(false)
+    } else {
+      setCurrentDisplay(true)
     }
   }
 
   return (
-    <div className={isLeave ? styles.DestinationFilterLeave : styles.DestinationFilterArrive}></div>
+    <div
+      className={classNames(isBack ? styles.DestinationFilterBack : null, styles.DestinationFilter)}
+    >
+      <div className={styles.head}>
+        <img src={icon} className={styles.icon}></img>
+        <h1 className={styles.text}>{isBack ? 'Обратно' : 'Туда'}</h1>
+        <button className={styles.toggleBtn} onClick={toggleDisplay}>
+          <img className={styles.iconButton} src={currentDisplay ? minus : plus}></img>
+        </button>
+      </div>
+      <div className={classNames(styles.sliders, { [styles.slidersHidden]: !currentDisplay })}>
+        <div className={styles.sliderContainer}>
+          <DestinationSlider isDeparture />
+        </div>
+        <div className={styles.sliderContainer}>
+          <DestinationSlider isDeparture={false} />
+        </div>
+      </div>
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@ import styles from './DateFilter.module.css'
 import { useState } from 'react'
 
 import CalendarIcon from '../../../shared/assets/svg/TicketSearch/Calendar.svg'
-import CustomCalendar from '../../../feautures/CustomCalendar/CustomCalendar'
+import CustomCalendar from '../../../features/CustomCalendar/CustomCalendar'
 
 const DateFilter = () => {
   const [startDate, setStartDate] = useState<Date | null>(null)

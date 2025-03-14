@@ -20,6 +20,14 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ initialMin, initialMax }) => 
     }
   }
 
+  const isCloseToInitialMin = (value: number) => {
+    return value >= 1 + initialMax * 0.1
+  }
+
+  const isCloseToInitialMax = (value: number) => {
+    return value <= initialMax - initialMax * 0.15
+  }
+
   return (
     <div className={classNames(styles.PriceFilter, 'price-filter')}>
       <h1 className={styles.title}>Стоимость</h1>
@@ -34,17 +42,20 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ initialMin, initialMax }) => 
           range={true}
           value={[currentMin, currentMax]}
           onChange={onChange}
-          styles={{}}
-          className={classNames('rc-slider', styles.customSlider)}
+          step={100}
         />
 
         <div className={styles.values}>
-          <p className={styles.minValue}>{initialMin}</p>
+          <p
+            className={styles.minValue}
+            style={{ display: isCloseToInitialMin(currentMin) ? 'block' : 'none' }}
+          >
+            {initialMin}
+          </p>
           <div
             className={styles.currentMinValue}
             style={{
               left: `${((currentMin - initialMin) / (initialMax - initialMin)) * 100}%`,
-              display: currentMin === initialMin ? `none` : `block`,
             }}
           >
             {currentMin}
@@ -53,12 +64,16 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ initialMin, initialMax }) => 
             className={styles.currentMaxValue}
             style={{
               left: `${((currentMax - initialMin) / (initialMax - initialMin)) * 100}%`,
-              display: currentMax === initialMax ? `none` : `block`,
             }}
           >
             {currentMax}
           </div>
-          <p className={styles.maxValue}>{initialMax}</p>
+          <p
+            className={styles.maxValue}
+            style={{ display: isCloseToInitialMax(currentMax) ? 'block' : 'none' }}
+          >
+            {initialMax}
+          </p>
         </div>
       </div>
     </div>

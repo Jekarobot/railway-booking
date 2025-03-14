@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import styles from './Results.module.css'
 import Header from '../../shared/ui/Header/Header'
 import Footer from '../../shared/ui/Footer/Footer'
-import TicketSearch from '../../feautures/TicketSearch/TicketSearch'
+import TicketSearch from '../../features/TicketSearch/TicketSearch'
 import ProgressBar from '../../shared/ui/ProgressBar/ProgressBar'
-import RenderStep from './renderStep/renderStep'
+import RenderStep from './RenderStep/RenderStep'
 
 const Results: React.FC = () => {
   const [step, setStep] = useState(1)

@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  min-width: 100%;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  gap: 48px;
+  cursor: pointer;
+}
+
+.itemsPerPage {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.founded {
+  padding-top: 6px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+}
+
+.sortOrder {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+  display: flex;
+}
+
+.itemsPerPage {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+}
+
+.itemList ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.itemsList li {
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+label {
+  padding-top: 6px;
+}
+
+.active {
+  color: black;
+}
+
+.customSelect {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selectedOption {
+  padding: 6px;
+  color: black;
+}
+
+.optionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  width: 135px;
+  color: black;
+}
+
+.optionsList li {
+  padding: 8px;
+  transition: background-color 0.3s;
+  box-shadow: 0px 1px 1px 0px #00000040;
+}
+
+.optionsList li:hover {
+  background-color: #ffca62;
+}

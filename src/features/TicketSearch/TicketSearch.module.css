@@ -51,6 +51,7 @@
   font-weight: 400;
   padding-left: 21px;
   box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 .inputIcon {

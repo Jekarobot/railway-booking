@@ -52,8 +52,26 @@ input[type='date'] {
   appearance: none;
 }
 
+ul {
+  list-style-type: none; /* Убирает маркеры списка */
+  margin: 0; /* Убирает отступы */
+  padding: 0; /* Убирает отступы */
+  display: flex;
+}
+
 li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  list-style-type: none; /* Убирает маркеры списка */
+  margin: 0; /* Убирает отступы */
+  padding: 0; /* Убирает отступы */
+}
+
+select {
+  appearance: none; /* Убирает стандартный вид */
+  -webkit-appearance: none; /* Для Safari */
+  -moz-appearance: none; /* Для Firefox */
+  background: none; /* Убирает фон */
+  border: none; /* Убирает границу */
+  padding: 8px; /* Добавляет внутренний отступ */
+  font-size: 16px; /* Устанавливает размер шрифта */
+  cursor: pointer; /* Устанавливает курсор */
 }

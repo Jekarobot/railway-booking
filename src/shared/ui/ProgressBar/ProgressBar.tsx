@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './ProgressBar.module.css'
 
-interface ProgressBarProps {
+interface RenderStepProps {
   activeStep: number
   setActiveStep: (step: number) => void
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ activeStep }) => {
+const ProgressBar: React.FC<RenderStepProps> = ({ activeStep }) => {
   return (
     <div className={styles.progressBar}>
       <div className={`${styles.step} ${styles.step1} ${activeStep >= 1 ? styles.active : ''}`}>

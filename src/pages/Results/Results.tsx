@@ -5,8 +5,10 @@ import Footer from '../../shared/ui/Footer/Footer'
 import TicketSearch from '../../features/TicketSearch/TicketSearch'
 import ProgressBar from '../../shared/ui/ProgressBar/ProgressBar'
 import RenderStep from './RenderStep/RenderStep'
+import mockTickets from '../../shared/mockData/mockTickets'
 
 const Results: React.FC = () => {
+  console.log('Rendering Results component')
   const [step, setStep] = useState(1)
 
   return (
@@ -19,7 +21,7 @@ const Results: React.FC = () => {
         </div>
       </header>
       <ProgressBar activeStep={step} setActiveStep={setStep} />
-      <RenderStep step={step} />
+      <RenderStep activeStep={step} setActiveStep={setStep} tickets={mockTickets.items} />
       <Footer />
     </div>
   )

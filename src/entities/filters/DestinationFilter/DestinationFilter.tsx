@@ -11,14 +11,10 @@ interface DestinationFilterProps {
 }
 
 const DestinationFilter: React.FC<DestinationFilterProps> = ({ icon, isBack }) => {
-  const [currentDisplay, setCurrentDisplay] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const toggleDisplay = () => {
-    if (currentDisplay === true) {
-      setCurrentDisplay(false)
-    } else {
-      setCurrentDisplay(true)
-    }
+    setIsExpanded((prev) => !prev)
   }
 
   return (
@@ -26,18 +22,18 @@ const DestinationFilter: React.FC<DestinationFilterProps> = ({ icon, isBack }) =
       className={classNames(isBack ? styles.DestinationFilterBack : null, styles.DestinationFilter)}
     >
       <div className={styles.head}>
-        <img src={icon} className={styles.icon}></img>
+        <img src={icon} className={styles.icon} alt="icon" />
         <h1 className={styles.text}>{isBack ? 'Обратно' : 'Туда'}</h1>
         <button className={styles.toggleBtn} onClick={toggleDisplay}>
-          <img className={styles.iconButton} src={currentDisplay ? minus : plus}></img>
+          <img className={styles.iconButton} src={isExpanded ? minus : plus} alt="toggle" />
         </button>
       </div>
-      <div className={classNames(styles.sliders, { [styles.slidersHidden]: !currentDisplay })}>
+      <div className={classNames(styles.sliders, { [styles.slidersHidden]: !isExpanded })}>
         <div className={styles.sliderContainer}>
-          <DestinationSlider isDeparture />
+          <DestinationSlider isDeparture isBack={isBack} />
         </div>
         <div className={styles.sliderContainer}>
-          <DestinationSlider isDeparture={false} />
+          <DestinationSlider isDeparture={false} isBack={isBack} />
         </div>
       </div>
     </div>

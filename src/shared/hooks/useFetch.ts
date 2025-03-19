@@ -21,7 +21,6 @@ function useFetch<T>(
   useEffect(() => {
     const fetchData = async () => {
       if (!params && method === 'GET') return
-
       try {
         setLoading(true)
         const options: RequestInit = {

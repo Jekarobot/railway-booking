@@ -1,77 +1,115 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
+import { Routes } from '../../shared/types/Routes'
+import { RoutesResponse } from '../../shared/types/RoutesResponse'
 
-// Интерфейс для параметров поиска
-export interface SearchParams {
-  fromCityInput: string
-  toCityInput: string
-  fromCityId: string
-  toCityId: string
-  dateStart?: string
-  dateEnd?: string
-  dateStartArrival?: string
-  dateEndArrival?: string
-  haveFirstClass?: boolean
-  haveSecondClass?: boolean
-  haveThirdClass?: boolean
-  haveFourthClass?: boolean
-  haveWifi?: boolean
-  haveAirConditioning?: boolean
-  haveExpress?: boolean
-  priceFrom?: number
-  priceTo?: number
-  startDepartureHourFrom?: number
-  startDepartureHourTo?: number
-  startArrivalHourFrom?: number
-  startArrivalHourTo?: number
-  endDepartureHourFrom?: number
-  endDepartureHourTo?: number
-  endArrivalHourFrom?: number
-  endArrivalHourTo?: number
-  limit?: number
-  offset?: number
-  sort?: 'date' | 'price' | 'duration'
-}
-
-// Кастомный хук useSearch
-export const useSearch = () => {
-  const [searchParams, setSearchParams] = useState<SearchParams>({
-    fromCityInput: '',
-    toCityInput: '',
-    fromCityId: '',
-    toCityId: '',
-    limit: 5,
-    offset: 0,
-    sort: 'date',
-  })
-
-  const updateSearchParams = (newParams: Partial<SearchParams>) => {
-    setSearchParams((prev) => ({ ...prev, ...newParams }))
-  }
-
-  return { searchParams, updateSearchParams }
-}
-
-// Интерфейс для контекста
 interface SearchContextProps {
-  searchParams: SearchParams
-  updateSearchParams: (newParams: Partial<SearchParams>) => void
+  searchParams: Routes
+  updateSearchParams: (newParams: Partial<Routes>) => void
+  routesResponse: RoutesResponse | null
+  setRoutesResponse: React.Dispatch<React.SetStateAction<RoutesResponse | null>>
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  resetSearchParameters: () => void
 }
 
-// Создание контекста
+const defaultSearchParams: Routes = {
+  from_city_input: '',
+  to_city_input: '',
+  from_city_id: '',
+  to_city_id: '',
+  date_start: undefined,
+  date_end: undefined,
+  date_start_arrival: undefined,
+  date_end_arrival: undefined,
+  have_first_class: false,
+  have_second_class: false,
+  have_third_class: false,
+  have_fourth_class: false,
+  have_wifi: false,
+  have_air_conditioning: false,
+  have_express: false,
+  price_from: undefined,
+  price_to: undefined,
+  initial_price_from: undefined,
+  initial_price_to: undefined,
+  start_departure_hour_from: undefined,
+  start_departure_hour_to: undefined,
+  start_arrival_hour_from: undefined,
+  start_arrival_hour_to: undefined,
+  end_departure_hour_from: undefined,
+  end_departure_hour_to: undefined,
+  end_arrival_hour_from: undefined,
+  end_arrival_hour_to: undefined,
+  limit: 5,
+  offset: 5,
+  sort: 'date',
+}
+
 const SearchContext = createContext<SearchContextProps | undefined>(undefined)
 
-// Провайдер контекста
 export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { searchParams, updateSearchParams } = useSearch()
+  const [searchParams, setSearchParams] = useState<Routes>({
+    from_city_input: '',
+    to_city_input: '',
+    from_city_id: '',
+    to_city_id: '',
+  })
+
+  const [routesResponse, setRoutesResponse] = useState<RoutesResponse | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const updateSearchParams = (newParams: Partial<Routes>) => {
+    setSearchParams((prev) => {
+      // Сравнение новых значений с текущими
+      const updatedParams = { ...prev, ...newParams }
+
+      // Проверка, изменились ли параметры, чтобы избежать лишнего рендера
+      const isChanged = Object.keys(newParams).some((key) => {
+        const k = key as keyof Routes
+        return prev[k] !== updatedParams[k]
+      })
+
+      if (isChanged) {
+        return updatedParams
+      }
+
+      return prev // Возвращаем старое состояние, если ничего не изменилось
+    })
+  }
+
+  useEffect(() => {
+    console.log('Current searchParams:', searchParams)
+  }, [searchParams])
+
+  useEffect(() => {
+    console.log('RoutesResponse updated:', routesResponse)
+  }, [routesResponse])
+
+  useEffect(() => {
+    console.log('Loading state changed:', loading)
+  }, [loading])
+
+  const resetSearchParameters = () => {
+    setSearchParams(defaultSearchParams)
+  }
 
   return (
-    <SearchContext.Provider value={{ searchParams, updateSearchParams }}>
+    <SearchContext.Provider
+      value={{
+        searchParams,
+        updateSearchParams,
+        routesResponse,
+        setRoutesResponse,
+        loading,
+        setLoading,
+        resetSearchParameters,
+      }}
+    >
       {children}
     </SearchContext.Provider>
   )
 }
 
-// Пользовательский хук для использования контекста
 export const useSearchContext = (): SearchContextProps => {
   const context = useContext(SearchContext)
   if (!context) {

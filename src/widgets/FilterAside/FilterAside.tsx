@@ -11,7 +11,7 @@ const FilterAside = () => {
     <div className={styles.filterAside}>
       <DateFilter />
       <GroupFilters />
-      <PriceFilter initialMin={0} initialMax={10000} />
+      <PriceFilter />
       <DestinationFilter icon={ArrowRight} isBack={false} />
       <DestinationFilter icon={ArrowLeft} isBack />
     </div>

@@ -1,31 +1,60 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useMemo, useRef } from 'react'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import classNames from 'classnames'
 import styles from './PriceFilter.module.css'
+import { useSearchContext } from '../../../providers/SearchProvider/SearchContext'
 
-interface PriceFilterProps {
-  initialMin: number
-  initialMax: number
-}
+const PriceFilter: React.FC = () => {
+  const { routesResponse, updateSearchParams } = useSearchContext()
 
-const PriceFilter: React.FC<PriceFilterProps> = ({ initialMin, initialMax }) => {
-  const [currentMin, setCurrentMin] = useState(initialMin)
-  const [currentMax, setCurrentMax] = useState(initialMax)
+  // Вычисляем начальные min и max цены
+  const { minPrice, maxPrice } = useMemo(() => {
+    if (!routesResponse?.items?.length) return { minPrice: 0, maxPrice: 10000 }
 
+    let minPrice = routesResponse.items[0].min_price
+    let maxPrice = routesResponse.items[0].min_price
+
+    routesResponse.items.forEach((item) => {
+      if (item.min_price < minPrice) minPrice = item.min_price
+      if (item.min_price > maxPrice) maxPrice = item.min_price
+    })
+
+    return { minPrice, maxPrice }
+  }, [routesResponse?.items])
+
+  // Храним начальные значения min/max, чтобы не менять их при каждом ререндере
+  const initialMinRef = useRef(minPrice)
+  const initialMaxRef = useRef(maxPrice)
+
+  // Локальные состояния для текущих значений ползунка
+  const [currentMin, setCurrentMin] = useState(minPrice)
+  const [currentMax, setCurrentMax] = useState(maxPrice)
+
+  // Обновляем параметры поиска с задержкой
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      updateSearchParams({ price_from: currentMin, price_to: currentMax })
+    }, 300)
+
+    return () => clearTimeout(timeoutId)
+  }, [currentMin, currentMax, updateSearchParams])
+
+  // Проверяем, близко ли значение к начальному минимуму или максимуму
+  const isCloseToInitialMin = (value: number) => {
+    return value > initialMinRef.current + (initialMaxRef.current - initialMinRef.current) * 0.1
+  }
+
+  const isCloseToInitialMax = (value: number) => {
+    return value < initialMaxRef.current - (initialMaxRef.current - initialMinRef.current) * 0.1
+  }
+
+  // Обработчик изменения ползунка
   const onChange = (value: number | number[]) => {
     if (Array.isArray(value)) {
       setCurrentMin(value[0])
       setCurrentMax(value[1])
     }
-  }
-
-  const isCloseToInitialMin = (value: number) => {
-    return value >= 1 + initialMax * 0.1
-  }
-
-  const isCloseToInitialMax = (value: number) => {
-    return value <= initialMax - initialMax * 0.15
   }
 
   return (
@@ -37,25 +66,24 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ initialMin, initialMax }) => 
           <p>до</p>
         </div>
         <Slider
-          min={initialMin}
-          max={initialMax}
+          min={initialMinRef.current} // Берем начальное значение
+          max={initialMaxRef.current} // Берем начальное значение
           range={true}
           value={[currentMin, currentMax]}
           onChange={onChange}
-          step={100}
+          step={10}
         />
-
         <div className={styles.values}>
           <p
             className={styles.minValue}
             style={{ display: isCloseToInitialMin(currentMin) ? 'block' : 'none' }}
           >
-            {initialMin}
+            {initialMinRef.current}
           </p>
           <div
             className={styles.currentMinValue}
             style={{
-              left: `${((currentMin - initialMin) / (initialMax - initialMin)) * 100}%`,
+              left: `${((currentMin - initialMinRef.current) / (initialMaxRef.current - initialMinRef.current)) * 100}%`,
             }}
           >
             {currentMin}
@@ -63,7 +91,7 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ initialMin, initialMax }) => 
           <div
             className={styles.currentMaxValue}
             style={{
-              left: `${((currentMax - initialMin) / (initialMax - initialMin)) * 100}%`,
+              left: `${((currentMax - initialMinRef.current) / (initialMaxRef.current - initialMinRef.current)) * 100}%`,
             }}
           >
             {currentMax}
@@ -72,7 +100,7 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ initialMin, initialMax }) => 
             className={styles.maxValue}
             style={{ display: isCloseToInitialMax(currentMax) ? 'block' : 'none' }}
           >
-            {initialMax}
+            {initialMaxRef.current}
           </p>
         </div>
       </div>

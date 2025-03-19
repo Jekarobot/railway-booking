@@ -63,6 +63,7 @@
 .customArrow {
   font-size: 30px;
   cursor: pointer;
+  width: 30px;
 }
 
 .customNavigationLabel {

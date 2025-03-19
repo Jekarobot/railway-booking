@@ -27,19 +27,19 @@ const DateFilter = () => {
           type="text"
           className={styles.inputField}
           placeholder="ДД/ММ/ГГ"
-          value={searchParams.dateStart || ''}
+          value={searchParams.date_start || ''}
           onClick={toggleStartCalendar}
           readOnly
         />
         <img src={CalendarIcon} alt="Calendar" className={styles.inputIcon} />
         {showStartCalendar && (
           <CustomCalendar
-            value={searchParams.dateStart ? new Date(searchParams.dateStart) : new Date()}
+            value={searchParams.date_start ? new Date(searchParams.date_start) : new Date()}
             onChange={(date) => {
               if (date instanceof Date) {
-                updateSearchParams({ dateStart: date.toLocaleDateString('ru-RU') })
+                updateSearchParams({ date_start: date.toLocaleDateString('ru-RU') })
               } else if (Array.isArray(date) && date[0] instanceof Date) {
-                updateSearchParams({ dateStart: date[0].toLocaleDateString('ru-RU') })
+                updateSearchParams({ date_start: date[0].toLocaleDateString('ru-RU') })
               }
               setShowStartCalendar(false)
             }}
@@ -53,19 +53,19 @@ const DateFilter = () => {
           type="text"
           className={styles.inputField}
           placeholder="ДД/ММ/ГГ"
-          value={searchParams.dateEnd || ''}
+          value={searchParams.date_end || ''}
           onClick={toggleEndCalendar}
           readOnly
         />
         <img src={CalendarIcon} alt="Calendar" className={styles.inputIcon} />
         {showEndCalendar && (
           <CustomCalendar
-            value={searchParams.dateEnd ? new Date(searchParams.dateEnd) : new Date()}
+            value={searchParams.date_end ? new Date(searchParams.date_end) : new Date()}
             onChange={(date) => {
               if (date instanceof Date) {
-                updateSearchParams({ dateEnd: date.toLocaleDateString('ru-RU') })
+                updateSearchParams({ date_end: date.toLocaleDateString('ru-RU') })
               } else if (Array.isArray(date) && date[0] instanceof Date) {
-                updateSearchParams({ dateEnd: date[0].toLocaleDateString('ru-RU') })
+                updateSearchParams({ date_end: date[0].toLocaleDateString('ru-RU') })
               }
               setShowEndCalendar(false)
             }}

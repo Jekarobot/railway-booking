@@ -13,6 +13,14 @@ interface RenderStepProps {
 
 const RenderStep: React.FC<RenderStepProps> = ({ activeStep, tickets }) => {
   switch (activeStep) {
+    case 0:
+      return (
+        <div className={styles.loadingContainer}>
+          <div className={styles.loadingBar}></div>
+          <p className={styles.loadingText}>Загружаем маршруты...</p>
+        </div>
+      )
+
     case 1:
       return (
         <div className={`${styles.step1} ${styles.step}`}>
@@ -25,6 +33,9 @@ const RenderStep: React.FC<RenderStepProps> = ({ activeStep, tickets }) => {
           </main>
         </div>
       )
+
+    default:
+      return null
   }
 }
 

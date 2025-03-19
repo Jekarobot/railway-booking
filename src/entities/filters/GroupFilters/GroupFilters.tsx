@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './GroupFilters.module.css'
 import { FilterItem } from './FilterItem/FilterItem'
 import Coupe from '../../../shared/assets/svg/Coupe.svg'
@@ -7,35 +7,30 @@ import Sitting from '../../../shared/assets/svg/Sitting.svg'
 import Lux from '../../../shared/assets/svg/Lux.svg'
 import WiFi from '../../../shared/assets/svg/WiFi.svg'
 import Express from '../../../shared/assets/svg/Express.svg'
+import { useSearchContext } from '../../../providers/SearchProvider/SearchContext'
+import { Routes } from '../../../shared/types/Routes'
 
 interface FilterData {
-  id: string
+  id: keyof Routes
   name: string
   icon: string
 }
 
 const filters: FilterData[] = [
-  { id: 'coupe', name: 'Купе', icon: Coupe },
-  { id: 'platskart', name: 'Плацкарт', icon: Platskart },
-  { id: 'sitting', name: 'Сидячий', icon: Sitting },
-  { id: 'lux', name: 'Люкс', icon: Lux },
-  { id: 'wifi', name: 'Wi-Fi', icon: WiFi },
-  { id: 'express', name: 'Экспресс', icon: Express },
+  { id: 'have_second_class', name: 'Купе', icon: Coupe },
+  { id: 'have_third_class', name: 'Плацкарт', icon: Platskart },
+  { id: 'have_fourth_class', name: 'Сидячий', icon: Sitting },
+  { id: 'have_first_class', name: 'Люкс', icon: Lux },
+  { id: 'have_wifi', name: 'Wi-Fi', icon: WiFi },
+  { id: 'have_express', name: 'Экспресс', icon: Express },
 ]
 
 export const GroupFilters: React.FC = () => {
-  const [checkedFilters, setCheckedFilters] = useState<Set<string>>(new Set())
+  const { searchParams, updateSearchParams } = useSearchContext()
 
-  const handleToggle = (id: string) => {
-    setCheckedFilters((prev) => {
-      const newSet = new Set(prev)
-      if (newSet.has(id)) {
-        newSet.delete(id)
-      } else {
-        newSet.add(id)
-      }
-      return newSet
-    })
+  const handleToggle = (id: keyof Routes) => {
+    console.log(`Toggling filter: ${id}, current value: ${searchParams[id]}`)
+    updateSearchParams({ [id]: !searchParams[id] })
   }
 
   return (
@@ -46,7 +41,7 @@ export const GroupFilters: React.FC = () => {
           id={filter.id}
           name={filter.name}
           icon={filter.icon}
-          isChecked={checkedFilters.has(filter.id)}
+          isChecked={!!searchParams[filter.id]}
           onChange={() => handleToggle(filter.id)}
         />
       ))}

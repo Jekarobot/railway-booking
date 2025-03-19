@@ -24,8 +24,8 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
   const [showStartCalendar, setShowStartCalendar] = useState(false)
   const [showEndCalendar, setShowEndCalendar] = useState(false)
 
-  const { data: fromCities } = useCitiesApi(searchParams.from_city_input)
-  const { data: toCities } = useCitiesApi(searchParams.to_city_input)
+  const { data: fromCities = [] } = useCitiesApi(searchParams.from_city_input)
+  const { data: toCities = [] } = useCitiesApi(searchParams.to_city_input)
 
   const [showFromDropdown, setShowFromDropdown] = useState(false)
   const [showToDropdown, setShowToDropdown] = useState(false)

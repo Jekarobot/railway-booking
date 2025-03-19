@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styles from './TicketsResultFilters.module.css'
+import { Routes } from '../../../shared/types/Routes'
 
 interface TicketsResultFiltersProps {
-  onFilterChange: (newFilters: { itemsPerPage: number; sortOrder: string }) => void
-  currentFilters: { itemsPerPage: number; sortOrder: string }
+  onFilterChange: (newFilters: Partial<Routes>) => void
+  currentFilters: { limit?: number; sort?: 'date' | 'price' | 'duration' }
   founded: number
 }
 
@@ -14,12 +15,12 @@ const TicketsResultFilters: React.FC<TicketsResultFiltersProps> = ({
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
-  const handleItemsPerPageClick = (itemsPerPage: number) => {
-    onFilterChange({ ...currentFilters, itemsPerPage })
+  const handleItemsPerPageClick = (limit: number) => {
+    onFilterChange({ ...currentFilters, limit })
   }
 
-  const handleSortOrderChange = (sortOrder: string) => {
-    onFilterChange({ ...currentFilters, sortOrder })
+  const handleSortOrderChange = (sort: 'date' | 'price' | 'duration') => {
+    onFilterChange({ ...currentFilters, sort })
     setIsDropdownOpen(false)
   }
 
@@ -31,15 +32,15 @@ const TicketsResultFilters: React.FC<TicketsResultFiltersProps> = ({
           <label>Сортировать по:</label>
           <div className={styles.customSelect} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             <div className={styles.selectedOption}>
-              {currentFilters.sortOrder === 'time'
+              {currentFilters.sort === 'date'
                 ? 'времени'
-                : currentFilters.sortOrder === 'price'
+                : currentFilters.sort === 'price'
                   ? 'стоимости'
                   : 'длительности'}
             </div>
             {isDropdownOpen && (
               <ul className={styles.optionsList}>
-                <li onClick={() => handleSortOrderChange('time')}>времени</li>
+                <li onClick={() => handleSortOrderChange('date')}>времени</li>
                 <li onClick={() => handleSortOrderChange('price')}>стоимости</li>
                 <li onClick={() => handleSortOrderChange('duration')}>длительности</li>
               </ul>
@@ -51,19 +52,19 @@ const TicketsResultFilters: React.FC<TicketsResultFiltersProps> = ({
           <ul className={styles.itemsList}>
             <li
               onClick={() => handleItemsPerPageClick(5)}
-              className={currentFilters.itemsPerPage === 5 ? styles.active : ''}
+              className={currentFilters.limit === 5 ? styles.active : ''}
             >
               5
             </li>
             <li
               onClick={() => handleItemsPerPageClick(10)}
-              className={currentFilters.itemsPerPage === 10 ? styles.active : ''}
+              className={currentFilters.limit === 10 ? styles.active : ''}
             >
               10
             </li>
             <li
               onClick={() => handleItemsPerPageClick(20)}
-              className={currentFilters.itemsPerPage === 20 ? styles.active : ''}
+              className={currentFilters.limit === 20 ? styles.active : ''}
             >
               20
             </li>

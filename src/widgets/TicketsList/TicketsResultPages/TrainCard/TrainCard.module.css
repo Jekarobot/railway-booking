@@ -1,0 +1,59 @@
+.trainCard {
+  width: 960px;
+  height: 355px;
+  border: 1px #c4c4c4 solid;
+  box-shadow: 0px 2px 2px 0px #0000004d;
+  display: flex;
+  flex-direction: row;
+}
+
+.train {
+  width: 197px;
+  background-color: #e4e0e9;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trainIcon {
+  width: 44px;
+  height: 52px;
+}
+
+.iconContainer {
+  width: 86px;
+  height: 86px;
+  border: 2px white solid;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.directions {
+  width: 480px;
+  border-right: 1px #e5e5e5 solid;
+}
+
+.trainName {
+  font-weight: 700;
+  font-size: 24px;
+  color: #3e3c41;
+}
+
+.firstArrivalCity,
+.arrivalCity,
+.destinationCity,
+.lastDestinationCity {
+  font-size: 16px;
+  margin: 1px;
+  font-weight: 400;
+}
+
+.firstArrivalCity,
+.lastDestinationCity {
+  color: #928f94;
+}

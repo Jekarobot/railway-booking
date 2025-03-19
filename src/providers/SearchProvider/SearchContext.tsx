@@ -41,7 +41,7 @@ const defaultSearchParams: Routes = {
   end_arrival_hour_from: undefined,
   end_arrival_hour_to: undefined,
   limit: 5,
-  offset: 5,
+  offset: 0,
   sort: 'date',
 }
 
@@ -53,6 +53,8 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     to_city_input: '',
     from_city_id: '',
     to_city_id: '',
+    limit: 5,
+    sort: 'date',
   })
 
   const [routesResponse, setRoutesResponse] = useState<RoutesResponse | null>(null)

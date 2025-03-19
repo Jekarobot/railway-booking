@@ -1,18 +1,23 @@
 import React from 'react'
 import styles from './LastTickets.module.css'
 import LastTicketsItem from './LastTicketsItem/LastTicketsItem'
+import useRoutesLastApi from '../../shared/API/routesLastAPI'
 
-interface LastTicketsProps {
-  tickets: any[]
-}
+const LastTickets: React.FC = () => {
+  const { data } = useRoutesLastApi()
 
-const LastTickets: React.FC<LastTicketsProps> = ({ tickets }) => {
+  // console.log(`useRoutesLastApi: ${JSON.stringify(data, null, 2)}`)
+
+  if (!Array.isArray(data) || data.length === 0) {
+    return
+  }
+
   return (
     <div className={styles.LastTickets}>
       <h1 className={styles.text}>Последние билеты</h1>
-      <LastTicketsItem ticket={tickets[0]} />
-      <LastTicketsItem ticket={tickets[1]} />
-      <LastTicketsItem ticket={tickets[2]} />
+      <LastTicketsItem ticket={data[0]} />
+      <LastTicketsItem ticket={data[1]} />
+      <LastTicketsItem ticket={data[2]} />
     </div>
   )
 }

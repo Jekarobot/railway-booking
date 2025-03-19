@@ -7,6 +7,7 @@ interface CustomCalendarProps {
   value: Date | [Date, Date] | null
   onChange: CalendarProps['onChange']
   isAside?: boolean
+  setTodayAsDefault?: boolean
 }
 
 const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange, isAside }) => {
@@ -71,6 +72,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange, isAsid
         minDetail="month"
         maxDetail="month"
         showNavigation={false}
+        minDate={new Date()}
       />
     </div>
   )

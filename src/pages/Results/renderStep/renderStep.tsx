@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './renderStep.module.css'
 import FilterAside from '../../../widgets/FilterAside/FilterAside'
 import LastTickets from '../../../widgets/LastTickets/LastTickets'
-import { mockLastTickets } from '../../../shared/mockData/mockLastTickets'
 import TicketsList from '../../../widgets/TicketsList/TicketsList'
 
 interface RenderStepProps {
@@ -11,7 +10,7 @@ interface RenderStepProps {
   tickets: any[]
 }
 
-const RenderStep: React.FC<RenderStepProps> = ({ activeStep, tickets }) => {
+const RenderStep: React.FC<RenderStepProps> = ({ activeStep }) => {
   switch (activeStep) {
     case 0:
       return (
@@ -26,10 +25,10 @@ const RenderStep: React.FC<RenderStepProps> = ({ activeStep, tickets }) => {
         <div className={`${styles.step1} ${styles.step}`}>
           <aside className={`${styles.step1__aside} ${styles.aside}`}>
             <FilterAside />
-            <LastTickets tickets={mockLastTickets} />
+            <LastTickets />
           </aside>
           <main className={`${styles.main}`}>
-            <TicketsList tickets={tickets} />
+            <TicketsList />
           </main>
         </div>
       )

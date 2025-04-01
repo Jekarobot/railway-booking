@@ -1,0 +1,50 @@
+.ticketsNavigation {
+  width: 100%;
+  display: flex;
+  margin-top: 140px;
+  justify-content: flex-end;
+  gap: 35px;
+}
+
+.oneLeftBtn,
+.oneRightBtn,
+.pageBtn,
+.activeBtn {
+  width: 85px;
+  height: 75px;
+  font-weight: 700;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oneLeftBtn {
+  rotate: -180deg;
+}
+
+.oneLeftBtn,
+.oneRightBtn {
+  border: #c4c4c4 2px solid;
+  border-radius: 5px;
+}
+
+.pageBtn {
+  border: #c4c4c4 2px solid;
+  border-radius: 5px;
+  color: #928f94;
+}
+
+.oneLeftBtn:hover,
+.oneRightBtn:hover,
+.pageBtn:hover {
+  border: #ffa800 2px solid;
+  border-radius: 5px;
+  color: #ffa800;
+}
+
+.activeBtn {
+  border: #ffa800 2px solid;
+  background-color: #ffa800;
+  color: white;
+}

@@ -8,7 +8,13 @@ export interface RouteItem {
   have_air_conditioning: boolean // Есть кондиционер? (на всём направлении)
   is_express: boolean // Экспресс-маршрут (на всём направлении)
   min_price: number // Минимальная цена поездки (на 1 взрослого)
-  total_available_seats: number // Количество свободных мест
+  available_seats: number // Количество свободных мест
+  available_seats_info: {
+    first?: number
+    second?: number
+    third?: number
+    fourth?: number
+  }
 
   arrival: {
     description: string // Информация о поездке туда
@@ -46,18 +52,36 @@ export interface RouteItem {
         price?: number
         top_price?: number
         bottom_price?: number
+        side_price?: number
+        linens_price?: number
+        wifi_price?: number
       }
       second?: {
-        top_price?: number
-        bottom_price?: number
-      }
-      third?: {
+        price?: number
         top_price?: number
         bottom_price?: number
         side_price?: number
+        linens_price?: number
+        wifi_price?: number
+      }
+      third?: {
+        price?: number
+        top_price?: number
+        bottom_price?: number
+        side_price?: number
+        linens_price?: number
+        wifi_price?: number
+      }
+      fourth?: {
+        price?: number
+        top_price?: number
+        bottom_price?: number
+        side_price?: number
+        linens_price?: number
+        wifi_price?: number
       }
     }
-    seats_info: {
+    available_seats_info: {
       first?: number
       second?: number
       third?: number
@@ -67,6 +91,7 @@ export interface RouteItem {
 
   departure: {
     description: string // Информация о поездке обратно (если это требуется)
+    is_express: boolean
     _id: string // Идентификатор
     have_first_class: boolean // В поезде есть вагоны класса «Люкс» (СВ)
     have_second_class: boolean // В поезде есть вагоны класса «Купе»
@@ -101,18 +126,36 @@ export interface RouteItem {
         price?: number
         top_price?: number
         bottom_price?: number
+        side_price?: number
+        linens_price?: number
+        wifi_price?: number
       }
       second?: {
-        top_price?: number
-        bottom_price?: number
-      }
-      third?: {
+        price?: number
         top_price?: number
         bottom_price?: number
         side_price?: number
+        linens_price?: number
+        wifi_price?: number
+      }
+      third?: {
+        price?: number
+        top_price?: number
+        bottom_price?: number
+        side_price?: number
+        linens_price?: number
+        wifi_price?: number
+      }
+      fourth?: {
+        price?: number
+        top_price?: number
+        bottom_price?: number
+        side_price?: number
+        linens_price?: number
+        wifi_price?: number
       }
     }
-    seats_info: {
+    available_seats_info: {
       first?: number
       second?: number
       third?: number

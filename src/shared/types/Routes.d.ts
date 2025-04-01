@@ -26,7 +26,7 @@ export interface Routes {
   end_departure_hour_to?: number
   end_arrival_hour_from?: number
   end_arrival_hour_to?: number
-  limit?: number
+  limit: number
   offset?: number
   sort?: 'date' | 'price' | 'duration'
 }

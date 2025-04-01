@@ -1,11 +1,18 @@
-import React from 'react'
 import styles from './TrainCard.module.css'
 import TrainTicket from '../../../../shared/assets/svg/TrainTicket.svg'
 import { RouteItem } from '../../../../shared/types/RoutesResponse'
 import { useSearchContext } from '../../../../providers/SearchProvider/SearchContext'
+import { useTrainDetails } from '../../../../providers/TrainDetailsProvider/TrainDetailsProvider.tsx'
+import ArrowRight from '../../../../shared/assets/svg/ArrowTicketRight.svg'
+import ArrowLeft from '../../../../shared/assets/svg/ArrowTicketLeft.svg'
+import SeatInfo from './SeatInfo/SeatInfo.tsx'
+import WiFiIcon from '../../../../shared/assets/svg/SVGR/WiFi'
+import ExpressIcon from '../../../../shared/assets/svg/SVGR/Express'
+import FoodIcon from '../../../../shared/assets/svg/SVGR/Food'
 
-const TrainCard = (ticket: RouteItem) => {
+const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
   const { searchParams } = useSearchContext()
+  const { setArrivalTrainId, setDepartureTrainId } = useTrainDetails()
 
   function capitalizeCityName(cityName: string): string {
     if (!String) return ''
@@ -15,8 +22,27 @@ const TrainCard = (ticket: RouteItem) => {
       .join('-')
   }
 
-  console.log('Ticket Data:', ticket)
-  console.log('departure To City Name:', ticket.departure?.to?.city?.name)
+  function formatSecondsToHHMM(seconds: number): string {
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds % 3600) / 60)
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+  }
+
+  function formatLargeSecondsToHHMM(seconds: number): string {
+    const totalMinutes = Math.floor(seconds / 60)
+    const hours = Math.floor(totalMinutes / 60) % 24
+    const minutes = totalMinutes % 60
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+  }
+
+  const handleSelectSeats = () => {
+    if (ticket.departure?.train?._id) {
+      setArrivalTrainId(ticket.departure._id)
+    }
+    if (ticket.arrival?.train?._id) {
+      setDepartureTrainId(ticket.arrival._id)
+    }
+  } // Значения поменяны местами из-за бага сервера
 
   return (
     <div className={styles.trainCard}>
@@ -42,80 +68,112 @@ const TrainCard = (ticket: RouteItem) => {
           )}
         </div>
       </div>
-      <div className={styles.directions}></div>
-      <div className={styles.places}></div>
+      <div className={styles.directions}>
+        <div className={styles.arrivalDirection}>
+          <div className={styles.arrivalDirection__from}>
+            <p className={styles.directions__landingTime}>
+              {formatLargeSecondsToHHMM(ticket.departure.from.datetime)}
+            </p>
+            <p className={styles.directions__city}>
+              {capitalizeCityName(ticket.departure.from.city?.name)}
+            </p>
+            <p className={styles.directions__railway}>
+              {ticket.departure.from.railway_station_name}
+            </p>
+          </div>
+          <div className={styles.arrivalDirection__duration}>
+            <p className={styles.directions__duration}>
+              {formatSecondsToHHMM(ticket.departure.duration)}
+            </p>
+            <img className={styles.directions__arrow} src={ArrowRight} alt="Arrow Right" />
+          </div>
+          <div className={styles.arrivalDirection__to}>
+            <p className={styles.directions__landingTime}>
+              {formatLargeSecondsToHHMM(ticket.departure.to.datetime)}
+            </p>
+            <p className={styles.directions__city}>
+              {capitalizeCityName(ticket.departure.to.city?.name)}
+            </p>
+            <p className={styles.directions__railway}>{ticket.departure.to.railway_station_name}</p>
+          </div>
+        </div>
+        {ticket.arrival && (
+          <div className={styles.departureDirection}>
+            <div className={styles.departureDirection__from}>
+              <p className={styles.directions__landingTime}>
+                {formatLargeSecondsToHHMM(ticket.arrival.from.datetime)}
+              </p>
+              <p className={styles.directions__city}>
+                {capitalizeCityName(ticket.arrival.from.city?.name)}
+              </p>
+              <p className={styles.directions__railway}>
+                {ticket.arrival.from.railway_station_name}
+              </p>
+            </div>
+            <div className={styles.arrivalDirection__duration}>
+              <p className={styles.directions__duration}>
+                {formatSecondsToHHMM(ticket.arrival.duration)}
+              </p>
+              <img className={styles.directions__arrow} src={ArrowLeft} alt="Arrow Left" />
+            </div>
+            <div className={styles.arrivalDirection__to}>
+              <p className={styles.directions__landingTime}>
+                {formatLargeSecondsToHHMM(ticket.arrival.to.datetime)}
+              </p>
+              <p className={styles.directions__city}>
+                {capitalizeCityName(ticket.arrival.to.city?.name)}
+              </p>
+              <p className={styles.directions__railway}>{ticket.arrival.to.railway_station_name}</p>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className={styles.places}>
+        <div>
+          {ticket.departure.have_fourth_class && (
+            <SeatInfo
+              className="Сидячий"
+              seatCount={ticket.departure.available_seats_info.fourth}
+              priceInfo={ticket.departure.price_info.fourth}
+            />
+          )}
+          {ticket.departure.have_third_class && (
+            <SeatInfo
+              className="Плацкарт"
+              seatCount={ticket.departure.available_seats_info.third}
+              priceInfo={ticket.departure.price_info.third}
+            />
+          )}
+          {ticket.departure.have_second_class && (
+            <SeatInfo
+              className="Купе"
+              seatCount={ticket.departure.available_seats_info.second}
+              priceInfo={ticket.departure.price_info.second}
+            />
+          )}
+          {ticket.departure.have_first_class && (
+            <SeatInfo
+              className="Люкс"
+              seatCount={ticket.departure.available_seats_info.first}
+              priceInfo={ticket.departure.price_info.first}
+            />
+          )}
+        </div>
+        <div className={styles.places__bottom}>
+          <div className={styles.options}>
+            <WiFiIcon className={ticket.departure.have_wifi ? styles.inactiveIcon : styles.icon} />
+            <ExpressIcon
+              className={ticket.departure.is_express ? styles.inactiveIcon : styles.icon}
+            />
+            <FoodIcon className={styles.inactiveIcon} />
+          </div>
+          <button className={styles.button} onClick={handleSelectSeats}>
+            Выбрать места
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default TrainCard
-
-// {
-//     "have_first_class": false,
-//     "have_second_class": false,
-//     "have_third_class": false,
-//     "have_fourth_class": false,
-//     "have_wifi": false,
-//     "have_air_conditioning": false,
-//     "is_express": false,
-//     "min_price": 697,
-//     "available_seats": 112,
-//     "available_seats_info": {
-//       "first": 18,
-//       "second": 32,
-//       "fourth": 62
-//     },
-//     "departure": {
-//       "_id": "67ceb6828c75f00047c923bf",
-//       "have_first_class": true,
-//       "have_second_class": true,
-//       "have_third_class": false,
-//       "have_fourth_class": true,
-//       "have_wifi": true,
-//       "have_air_conditioning": true,
-//       "is_express": false,
-//       "min_price": 697,
-//       "duration": 261000,
-//       "available_seats": 112,
-//       "available_seats_info": {
-//         "first": 18,
-//         "second": 32,
-//         "fourth": 62
-//       },
-//       "train": {
-//         "_id": "67ceb6598c75f00047c9021c",
-//         "name": "Калина - 71"
-//       },
-//       "from": {
-//         "railway_station_name": "Балаково",
-//         "city": {
-//           "_id": "67ceb6548c75f00047c8f796",
-//           "name": "балаково"
-//         },
-//         "datetime": 1704895926
-//       },
-//       "to": {
-//         "railway_station_name": "Ладожский",
-//         "city": {
-//           "_id": "67ceb6548c75f00047c8f78e",
-//           "name": "санкт-петербург"
-//         },
-//         "datetime": 1705156926
-//       },
-//       "price_info": {
-//         "first": {
-//           "price": 4330,
-//           "top_price": 3350,
-//           "bottom_price": 3210
-//         },
-//         "second": {
-//           "top_price": 2178,
-//           "bottom_price": 2568
-//         },
-//         "fourth": {
-//           "top_price": 958,
-//           "bottom_price": 697
-//         }
-//       }
-//     }
-//   }

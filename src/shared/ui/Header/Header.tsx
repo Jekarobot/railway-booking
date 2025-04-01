@@ -10,7 +10,16 @@ const Header: React.FC = () => {
   }
 
   const handleScrollToSection = (id: string) => {
-    navigate(`/#${id}`)
+    if (window.location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: id } }) // Передаем, куда прокрутить
+    } else {
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100) // Небольшая задержка на случай быстрого рендера
+    }
   }
 
   return (
@@ -26,7 +35,10 @@ const Header: React.FC = () => {
             <a
               className={styles.navLink}
               href="#about"
-              onClick={() => handleScrollToSection('about')}
+              onClick={(e) => {
+                e.preventDefault()
+                handleScrollToSection('about')
+              }}
             >
               О нас
             </a>
@@ -35,7 +47,10 @@ const Header: React.FC = () => {
             <a
               className={styles.navLink}
               href="#how-it-works"
-              onClick={() => handleScrollToSection('how-it-works')}
+              onClick={(e) => {
+                e.preventDefault()
+                handleScrollToSection('how-it-works')
+              }}
             >
               Как это работает
             </a>
@@ -44,13 +59,23 @@ const Header: React.FC = () => {
             <a
               className={styles.navLink}
               href="#feedback"
-              onClick={() => handleScrollToSection('feedback')}
+              onClick={(e) => {
+                e.preventDefault()
+                handleScrollToSection('feedback')
+              }}
             >
               Отзывы
             </a>
           </li>
           <li>
-            <a className={styles.navLink} href="#contacts">
+            <a
+              className={styles.navLink}
+              href="#contacts"
+              onClick={(e) => {
+                e.preventDefault()
+                handleScrollToSection('contacts')
+              }}
+            >
               Контакты
             </a>
           </li>

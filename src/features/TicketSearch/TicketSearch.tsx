@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './TicketSearch.module.css'
 import { useCitiesApi } from '../../shared/API/citiesAPI'
@@ -24,19 +24,34 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
   const [showStartCalendar, setShowStartCalendar] = useState(false)
   const [showEndCalendar, setShowEndCalendar] = useState(false)
 
-  const { data: fromCities = [] } = useCitiesApi(searchParams.from_city_input)
-  const { data: toCities = [] } = useCitiesApi(searchParams.to_city_input)
+  const [fromCities, setFromCities] = useState<City[]>([])
+  const [toCities, setToCities] = useState<City[]>([])
 
   const [showFromDropdown, setShowFromDropdown] = useState(false)
   const [showToDropdown, setShowToDropdown] = useState(false)
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const fetchFromCities = async () => {
+      const result = await useCitiesApi(searchParams.from_city_input)
+      setFromCities(result.data || [])
+    }
+    fetchFromCities()
+  }, [searchParams.from_city_input])
+
+  useEffect(() => {
+    const fetchToCities = async () => {
+      const result = await useCitiesApi(searchParams.to_city_input)
+      setToCities(result.data || [])
+    }
+    fetchToCities()
+  }, [searchParams.to_city_input])
+
   const toggleStartCalendar = () => setShowStartCalendar((prev) => !prev)
   const toggleEndCalendar = () => setShowEndCalendar((prev) => !prev)
 
   const handleCityBlur = (
-    // Для поиска при вводе
     inputValue: string,
     cities: City[],
     updateFn: (params: any) => void,
@@ -55,6 +70,7 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
     }
     navigate('/results', { state: { searchParams, routesData } })
   }
+
   return (
     <div className={isWide ? styles.wideForm : styles.narrowForm}>
       {/* Блок "Направление" */}

@@ -33,7 +33,7 @@ const FeedbackSection = () => {
     pauseOnHover: true,
     appendDots: (dots: React.ReactNode) => (
       <div style={{ top: '350px' }}>
-        <ul> {dots} </ul>
+        <ul className={styles.dots}> {dots} </ul>
       </div>
     ),
     customPaging: () => (

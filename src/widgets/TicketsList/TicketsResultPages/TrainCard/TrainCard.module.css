@@ -1,6 +1,6 @@
 .trainCard {
   width: 960px;
-  height: 355px;
+  min-height: 300px;
   border: 1px #c4c4c4 solid;
   box-shadow: 0px 2px 2px 0px #0000004d;
   display: flex;
@@ -10,7 +10,7 @@
 .train {
   width: 197px;
   background-color: #e4e0e9;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,4 +56,115 @@
 .firstArrivalCity,
 .lastDestinationCity {
   color: #928f94;
+}
+
+.directions {
+  padding-top: 50px;
+}
+
+.arrivalDirection,
+.departureDirection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.arrivalDirection__from,
+.arrivalDirection__to,
+.departureDirection__from,
+.departureDirection__to {
+  min-width: 150px;
+  padding-left: 25px;
+}
+
+.directions__landingTime {
+  margin-bottom: 7px;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+}
+.directions__city,
+.directions__railway {
+  margin: 0;
+}
+
+.directions__city {
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+}
+
+.directions__railway {
+  font-weight: 400;
+  color: #928f94;
+  font-size: 18px;
+}
+
+.arrivalDirection__duration,
+.departureDirection__duration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.directions__arrow {
+  width: 30px;
+  height: 20px;
+}
+
+.arrivalDirection__duration {
+  font-weight: 400;
+  font-size: 18px;
+  color: #c4c4c4;
+}
+
+.places {
+  width: 240px;
+  padding: 40px 21px 20px 24px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.options {
+  display: flex;
+  margin-left: auto;
+  gap: 18px;
+}
+
+.icon {
+  fill: #e5e5e5;
+}
+
+.inactiveIcon {
+  fill: #ffa800;
+}
+
+.button {
+  width: 228px;
+  height: 39px;
+  background-color: #ffa800;
+  border: #ffa800 1px solid;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.button:hover {
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.button:active {
+  background-color: transparent;
+  color: #ffa800;
+}
+
+.places__bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-end;
 }

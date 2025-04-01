@@ -81,6 +81,7 @@ label {
   z-index: 1;
   width: 135px;
   color: black;
+  background-color: #f7f5f9;
 }
 
 .optionsList li {

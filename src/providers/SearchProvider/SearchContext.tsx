@@ -45,6 +45,14 @@ const defaultSearchParams: Routes = {
   sort: 'date',
 }
 
+const getCurrentDateFormatted = (): string => {
+  const date = new Date()
+  const day = date.getDate().toString().padStart(2, '0')
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const year = date.getFullYear().toString()
+  return `${day}.${month}.${year}`
+}
+
 const SearchContext = createContext<SearchContextProps | undefined>(undefined)
 
 export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -53,6 +61,7 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     to_city_input: '',
     from_city_id: '',
     to_city_id: '',
+    date_start: getCurrentDateFormatted(),
     limit: 5,
     sort: 'date',
   })

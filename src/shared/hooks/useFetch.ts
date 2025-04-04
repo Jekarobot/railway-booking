@@ -20,8 +20,9 @@ function useFetch<T>(
 
   useEffect(() => {
     if (!endpoint) {
+      setData(null)
       setLoading(false)
-      setError(new Error('Endpoint is required'))
+      setError(null)
       return
     }
 
@@ -29,7 +30,6 @@ function useFetch<T>(
 
     const fetchData = async () => {
       setLoading(true)
-
       try {
         const url = `${BASE_URL}${endpoint}${params ? `?${params}` : ''}`
         const options: RequestInit = {

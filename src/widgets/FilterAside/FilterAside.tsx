@@ -3,8 +3,8 @@ import DateFilter from '../../entities/filters/DateFilter/DateFilter'
 import GroupFilters from '../../entities/filters/GroupFilters/GroupFilters'
 import PriceFilter from '../../entities/filters/PriceFilter/PriceFilter'
 import DestinationFilter from '../../entities/filters/DestinationFilter/DestinationFilter'
-import ArrowRight from '../../shared/assets/svg/Aside/ArrowRight.svg'
-import ArrowLeft from '../../shared/assets/svg/Aside/ArrowLeft.svg'
+import ArrowRight from '../../shared/assets/svg/ArrowRight.svg'
+import ArrowLeft from '../../shared/assets/svg/ArrowLeft.svg'
 
 const FilterAside = () => {
   return (

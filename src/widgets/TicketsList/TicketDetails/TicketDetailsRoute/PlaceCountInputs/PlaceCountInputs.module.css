@@ -1,0 +1,82 @@
+.head {
+  font-weight: 700;
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.inputsContainer {
+  display: flex;
+}
+
+.adultContainer,
+.kidsContainer,
+.kidsNoPlaceContainer {
+  width: 280px;
+  height: 172px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 35px;
+  padding-top: 20px;
+  border: transparent 1px solid;
+}
+
+.adultContainer:hover,
+.kidsContainer:hover,
+.kidsNoPlaceContainer:hover {
+  border: #ffa800c9 1px solid;
+}
+
+.adultContainer:focus-within,
+.kidsContainer:focus-within,
+.kidsNoPlaceContainer:focus-within {
+  background-color: #f7f6f6;
+  box-shadow: 0px 2px 2px 0px #00000040;
+}
+
+.inputLabelAdult,
+.inputLabelKids,
+.inputLabelKidsNoPlace {
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  top: 14.5%;
+  left: 50px;
+}
+
+.inputLabelKidsNoPlace {
+  left: 45px;
+}
+
+.adultInput,
+.kidsInput,
+.kidsNoPlaceInput {
+  box-sizing: border-box;
+  width: 240px;
+  height: 50px;
+  border: 1px #928f94 solid;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 120px;
+  background-color: white;
+}
+
+.kidsNoPlaceInput {
+  padding-left: 210px;
+}
+
+.kidsInput {
+  padding-left: 110px;
+}
+
+.adultText,
+.kidsText {
+  width: 240px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.kidsText {
+  color: #928f94;
+}

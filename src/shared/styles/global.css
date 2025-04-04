@@ -75,3 +75,15 @@ select {
   font-size: 16px; /* Устанавливает размер шрифта */
   cursor: pointer; /* Устанавливает курсор */
 }
+
+/* Убираем стрелочки в Chrome, Safari, Edge и Opera */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Убираем стрелочки в Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

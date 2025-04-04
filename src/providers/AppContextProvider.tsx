@@ -1,12 +1,15 @@
 import React from 'react'
 import { SearchProvider } from './SearchProvider/SearchContext'
 import { TrainDetailsProvider } from './TrainDetailsProvider/TrainDetailsProvider'
+import { OrderProvider } from './OrderBuildProvider/OrderContext'
 
 const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <SearchProvider>
-      <TrainDetailsProvider>{children}</TrainDetailsProvider>
-    </SearchProvider>
+    <OrderProvider>
+      <SearchProvider>
+        <TrainDetailsProvider>{children}</TrainDetailsProvider>
+      </SearchProvider>
+    </OrderProvider>
   )
 }
 

@@ -72,7 +72,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ value, onChange, isAsid
         minDetail="month"
         maxDetail="month"
         showNavigation={false}
-        minDate={new Date()}
+        // minDate={new Date()} // Коммент, иначе маршруты перестали приходить
       />
     </div>
   )

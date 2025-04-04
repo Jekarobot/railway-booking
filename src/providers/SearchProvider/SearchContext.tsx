@@ -61,7 +61,7 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     to_city_input: '',
     from_city_id: '',
     to_city_id: '',
-    date_start: getCurrentDateFormatted(),
+    // date_start: getCurrentDateFormatted(), // Коммент, иначе маршруты перестали приходить
     limit: 5,
     sort: 'date',
   })

@@ -2,7 +2,11 @@ import styles from './TrainCard.module.css'
 import TrainTicket from '../../../../shared/assets/svg/TrainTicket.svg'
 import { RouteItem } from '../../../../shared/types/RoutesResponse'
 import { useSearchContext } from '../../../../providers/SearchProvider/SearchContext'
-import { useTrainDetails } from '../../../../providers/TrainDetailsProvider/TrainDetailsProvider.tsx'
+import {
+  capitalizeCityName,
+  formatSecondsToHHMM,
+  formatLargeSecondsToHHMM,
+} from '../../../../shared/hooks/useFormatTools.ts'
 import ArrowRight from '../../../../shared/assets/svg/ArrowTicketRight.svg'
 import ArrowLeft from '../../../../shared/assets/svg/ArrowTicketLeft.svg'
 import SeatInfo from './SeatInfo/SeatInfo.tsx'
@@ -12,37 +16,12 @@ import FoodIcon from '../../../../shared/assets/svg/SVGR/Food'
 
 const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
   const { searchParams } = useSearchContext()
-  const { setArrivalTrainId, setDepartureTrainId } = useTrainDetails()
-
-  function capitalizeCityName(cityName: string): string {
-    if (!String) return ''
-    return cityName
-      .split('-')
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
-      .join('-')
-  }
-
-  function formatSecondsToHHMM(seconds: number): string {
-    const hours = Math.floor(seconds / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60)
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
-  }
-
-  function formatLargeSecondsToHHMM(seconds: number): string {
-    const totalMinutes = Math.floor(seconds / 60)
-    const hours = Math.floor(totalMinutes / 60) % 24
-    const minutes = totalMinutes % 60
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
-  }
 
   const handleSelectSeats = () => {
-    if (ticket.departure?.train?._id) {
-      setArrivalTrainId(ticket.departure._id)
+    if (ticket.onSelect) {
+      ticket.onSelect() // Вызываем onSelect, если он передан
     }
-    if (ticket.arrival?.train?._id) {
-      setDepartureTrainId(ticket.arrival._id)
-    }
-  } // Значения поменяны местами из-за бага сервера
+  }
 
   return (
     <div className={styles.trainCard}>
@@ -69,6 +48,8 @@ const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
         </div>
       </div>
       <div className={styles.directions}>
+        {' '}
+        {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
         <div className={styles.arrivalDirection}>
           <div className={styles.arrivalDirection__from}>
             <p className={styles.directions__landingTime}>

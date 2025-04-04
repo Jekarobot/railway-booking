@@ -20,16 +20,15 @@ const useRoutesSeatsApi = (routeId: string) => {
 
   const queryString = queryParts.length ? `?${queryParts.join('&')}` : ''
 
-  console.log(`API called with routeId: ${routeId} and query: ${queryString}`)
+  // console.log(`API called with routeId: ${routeId} and query: ${queryString}`)
 
-  // Always call useFetch, handle empty routeId inside
   const fetchResult = useFetch<any>(
     routeId ? `/routes/${routeId}/seats` : '',
     queryString || '',
     'GET'
   )
 
-  console.log(`Fetch status: ${fetchResult.loading ? 'Loading' : 'Completed'}`)
+  // console.log(`Fetch status: ${fetchResult.loading ? 'Loading' : 'Completed'}`)
 
   if (routeId) {
     console.log(`API response: ${JSON.stringify(fetchResult.data)}`)

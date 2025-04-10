@@ -1,0 +1,202 @@
+.head {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.numberContainer {
+  width: 190px;
+  height: 160px;
+  background-color: #ffd98f;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coachNumber {
+  font-weight: 700;
+  font-size: 72px;
+}
+
+.coachNumberText {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.seatsContainer {
+  margin-left: 85px;
+}
+
+.availableSeatsContainer,
+.availableTopSeatsContainer,
+.availableBottomSeatsContainer,
+.availableSideSeatsContainer,
+.topPriceContainer,
+.bottomPriceContainer,
+.sidePriceContainer,
+.servicesTextContainer {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.seatsContainer,
+.priceContainer,
+.servicesContainer {
+  margin-top: 15px;
+}
+.topPriceContainer,
+.bottomPriceContainer,
+.sidePriceContainer {
+  gap: 10px;
+}
+
+.seatsContainerTextMain,
+.priceText,
+.servicesText1 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+}
+
+.seatsContainerText {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.seatsNumberMain {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.seatsNumber,
+.price {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.priceContainer {
+  margin-left: 113px;
+}
+
+.servicesButtons {
+  display: flex;
+  gap: 13px;
+}
+
+.priceIcon {
+  width: 14px;
+  height: 17px;
+}
+
+.servicesContainer {
+  margin-left: 113px;
+}
+
+.servicesText2 {
+  color: #c4c4c4;
+}
+
+.button {
+  width: 36px;
+  height: 36px;
+  border: 1px #292929 solid;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: #ffa800;
+}
+
+.buttonActive {
+  width: 36px;
+  height: 36px;
+  border: 1px #fdb935 solid;
+  border-radius: 5px;
+  background-color: #fdb935;
+}
+
+.buttonIconActive {
+  fill: #f4f2f6;
+}
+
+.buttonIncluded {
+  width: 36px;
+  height: 36px;
+  background-color: #fcdc9d;
+  border-radius: 5px;
+}
+
+.buttonIconIncluded {
+  fill: #928f94;
+}
+
+.currentUsersPicks {
+  width: 199px;
+  height: 72px;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: 42px;
+}
+
+.currentUsersPicksText {
+  padding: 16px 15px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.airConditionButton,
+.WiFiButton,
+.linensButton,
+.foodButton {
+  position: relative;
+}
+
+.WiFiButton::after,
+.airConditionButton::after,
+.linensButton::after,
+.foodButton::after {
+  position: absolute;
+  background-color: #f3f3f3;
+  padding: 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+  top: 40px;
+}
+
+.WiFiButton:hover::after,
+.airConditionButton:hover::after,
+.linensButton:hover::after,
+.foodButton:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.WiFiButton::after {
+  content: 'WiFi';
+  left: 0px;
+}
+
+.airConditionButton::after {
+  content: 'Кондиционер';
+  left: -25px;
+}
+
+.linensButton::after {
+  content: 'Бельё';
+  left: -5px;
+}
+
+.foodButton::after {
+  content: 'Еда';
+  left: 0px;
+}

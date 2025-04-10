@@ -1,0 +1,383 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coachFourth {
+  width: 921px;
+  height: 145px;
+  background-image: url('src/shared/assets/coachSchemes/FourthCoach.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.coachNumberFourth {
+  width: 32px;
+  height: 24px;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 41px;
+}
+
+.coachNumberFourthText {
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.currentPrice {
+  align-self: flex-end;
+  margin-right: 38px;
+}
+
+.currentPriceText {
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffa800;
+}
+
+.currentPriceIcon {
+  width: 14px;
+  height: 17px;
+}
+
+.seat {
+  width: 27px;
+  height: 19px;
+  background-color: #f2f2f2;
+  display: inline;
+  position: absolute;
+  top: 29px;
+  box-sizing: border-box;
+  font-weight: 700;
+}
+
+.seatUnavailable {
+  background-color: #cccccc;
+}
+
+.seatSelected {
+  border: 2px #ffa800 solid;
+}
+
+.seat1 {
+  top: 54px;
+  left: 144px;
+}
+
+.seat2 {
+  top: 32px;
+  left: 144px;
+}
+
+.seat3 {
+  top: 54px;
+  left: 190px;
+}
+
+.seat4 {
+  top: 32px;
+  left: 190px;
+}
+
+.seat5 {
+  top: 54px;
+  left: 233px;
+}
+
+.seat6 {
+  top: 32px;
+  left: 233px;
+}
+
+.seat7 {
+  top: 54px;
+  left: 276px;
+}
+
+.seat8 {
+  top: 32px;
+  left: 276px;
+}
+
+.seat9 {
+  top: 54px;
+  left: 322px;
+}
+
+.seat10 {
+  top: 32px;
+  left: 322px;
+}
+
+.seat11 {
+  top: 54px;
+  left: 366px;
+}
+
+.seat12 {
+  top: 32px;
+  left: 366px;
+}
+
+.seat13 {
+  top: 54px;
+  left: 410px;
+}
+
+.seat14 {
+  top: 32px;
+  left: 410px;
+}
+
+.seat15 {
+  top: 54px;
+  left: 453px;
+}
+
+.seat16 {
+  top: 32px;
+  left: 453px;
+}
+
+.seat18 {
+  top: 32px;
+  left: 497px;
+}
+
+.seat17 {
+  top: 54px;
+  left: 497px;
+}
+
+.seat18 {
+  top: 32px;
+  left: 497px;
+}
+
+.seat19 {
+  top: 54px;
+  left: 540px;
+}
+
+.seat20 {
+  top: 32px;
+  left: 540px;
+}
+
+.seat21 {
+  top: 54px;
+  left: 584px;
+}
+
+.seat22 {
+  top: 32px;
+  left: 584px;
+}
+
+.seat23 {
+  top: 54px;
+  left: 629px;
+}
+
+.seat24 {
+  top: 32px;
+  left: 629px;
+}
+
+.seat25 {
+  top: 54px;
+  left: 672px;
+}
+
+.seat26 {
+  top: 32px;
+  left: 672px;
+}
+
+.seat27 {
+  top: 54px;
+  left: 718px;
+}
+
+.seat28 {
+  top: 32px;
+  left: 718px;
+}
+
+.seat29 {
+  top: 54px;
+  left: 761px;
+}
+
+.seat30 {
+  top: 32px;
+  left: 761px;
+}
+
+.seat31 {
+  top: 54px;
+  left: 805px;
+}
+
+.seat32 {
+  top: 32px;
+  left: 805px;
+}
+
+.seat33 {
+  top: 113px;
+  left: 144px;
+}
+
+.seat34 {
+  top: 92px;
+  left: 190px;
+}
+
+.seat35 {
+  top: 113px;
+  left: 190px;
+}
+
+.seat36 {
+  top: 92px;
+  left: 233px;
+}
+
+.seat37 {
+  top: 113px;
+  left: 233px;
+}
+
+.seat38 {
+  top: 92px;
+  left: 276px;
+}
+
+.seat39 {
+  top: 113px;
+  left: 276px;
+}
+
+.seat40 {
+  top: 92px;
+  left: 322px;
+}
+
+.seat41 {
+  top: 113px;
+  left: 322px;
+}
+
+.seat42 {
+  top: 92px;
+  left: 366px;
+}
+
+.seat43 {
+  top: 113px;
+  left: 366px;
+}
+
+.seat44 {
+  top: 92px;
+  left: 410px;
+}
+
+.seat45 {
+  top: 113px;
+  left: 410px;
+}
+
+.seat46 {
+  top: 92px;
+  left: 453px;
+}
+
+.seat47 {
+  top: 113px;
+  left: 453px;
+}
+
+.seat48 {
+  top: 92px;
+  left: 497px;
+}
+
+.seat49 {
+  top: 113px;
+  left: 497px;
+}
+
+.seat50 {
+  top: 92px;
+  left: 540px;
+}
+
+.seat51 {
+  top: 113px;
+  left: 540px;
+}
+
+.seat52 {
+  top: 92px;
+  left: 584px;
+}
+
+.seat53 {
+  top: 113px;
+  left: 584px;
+}
+
+.seat54 {
+  top: 92px;
+  left: 629px;
+}
+
+.seat55 {
+  top: 113px;
+  left: 629px;
+}
+
+.seat56 {
+  top: 92px;
+  left: 672px;
+}
+
+.seat57 {
+  top: 113px;
+  left: 672px;
+}
+
+.seat58 {
+  top: 92px;
+  left: 718px;
+}
+
+.seat59 {
+  top: 113px;
+  left: 718px;
+}
+
+.seat60 {
+  top: 92px;
+  left: 761px;
+}
+
+.seat61 {
+  top: 113px;
+  left: 761px;
+}
+
+.seat62 {
+  top: 113px;
+  left: 805px;
+}

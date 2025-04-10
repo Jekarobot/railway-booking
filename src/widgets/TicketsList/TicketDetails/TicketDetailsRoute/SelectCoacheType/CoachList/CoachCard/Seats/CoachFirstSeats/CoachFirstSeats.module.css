@@ -1,0 +1,133 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coachFirst {
+  width: 921px;
+  height: 145px;
+  background-image: url('src/shared/assets/coachSchemes/FirstCoach.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.coachNumberFirst {
+  width: 32px;
+  height: 24px;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 41px;
+}
+
+.coachNumberFirstText {
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.currentPrice {
+  align-self: flex-end;
+  margin-right: 38px;
+}
+
+.currentPriceText {
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffa800;
+}
+
+.currentPriceIcon {
+  width: 14px;
+  height: 17px;
+}
+
+.seat {
+  width: 26px;
+  height: 57px;
+  background-color: #f2f2f2;
+  display: inline;
+  position: absolute;
+  top: 29px;
+  box-sizing: border-box;
+  padding-top: 30px;
+  font-weight: 700;
+}
+
+.seatUnavailable {
+  background-color: #cccccc;
+}
+
+.seatSelected {
+  border: 2px #ffa800 solid;
+}
+
+.seat1 {
+  left: 134px;
+}
+
+.seat2 {
+  left: 194px;
+}
+
+.seat3 {
+  left: 224px;
+}
+
+.seat4 {
+  left: 282px;
+}
+
+.seat5 {
+  left: 313px;
+}
+
+.seat6 {
+  left: 373px;
+}
+
+.seat7 {
+  left: 403px;
+}
+
+.seat8 {
+  left: 462px;
+}
+
+.seat9 {
+  left: 492px;
+}
+
+.seat10 {
+  left: 552px;
+}
+
+.seat11 {
+  left: 583px;
+}
+
+.seat12 {
+  left: 641px;
+}
+
+.seat13 {
+  left: 671px;
+}
+
+.seat14 {
+  left: 731px;
+}
+
+.seat15 {
+  left: 761px;
+}
+
+.seat16 {
+  left: 821px;
+}

@@ -1,0 +1,272 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coachThird {
+  width: 921px;
+  height: 145px;
+  background-image: url('src/shared/assets/coachSchemes/ThirdCoach.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.coachNumberThird {
+  width: 32px;
+  height: 24px;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 41px;
+}
+
+.coachNumberThirdText {
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.currentPrice {
+  align-self: flex-end;
+  margin-right: 38px;
+}
+
+.currentPriceText {
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffa800;
+}
+
+.currentPriceIcon {
+  width: 14px;
+  height: 17px;
+}
+
+.seat {
+  width: 26px;
+  height: 31px;
+  background-color: #f2f2f2;
+  display: inline;
+  position: absolute;
+  top: 29px;
+  box-sizing: border-box;
+  font-weight: 700;
+}
+
+.seatBottom {
+  top: 60px;
+  left: 5px;
+  height: 31px;
+}
+
+.seatUnavailable {
+  background-color: #cccccc;
+}
+
+.seatSelected {
+  border: 2px #ffa800 solid;
+}
+
+.seatSide {
+  width: 42px;
+  height: 24px;
+  top: 113px;
+}
+
+.seat1 {
+  left: 134px;
+}
+
+.seat2 {
+  left: 134px;
+}
+
+.seat3 {
+  left: 194px;
+}
+
+.seat4 {
+  left: 194px;
+}
+
+.seat5 {
+  left: 224px;
+}
+
+.seat6 {
+  left: 224px;
+}
+
+.seat7 {
+  left: 283px;
+}
+
+.seat8 {
+  left: 283px;
+}
+
+.seat9 {
+  left: 313px;
+}
+
+.seat10 {
+  left: 313px;
+}
+
+.seat11 {
+  left: 372px;
+}
+
+.seat12 {
+  left: 372px;
+}
+
+.seat13 {
+  left: 403px;
+}
+
+.seat14 {
+  left: 403px;
+}
+
+.seat15 {
+  left: 462px;
+}
+
+.seat16 {
+  left: 462px;
+}
+
+.seat17 {
+  left: 492px;
+}
+
+.seat18 {
+  left: 492px;
+}
+
+.seat19 {
+  left: 552px;
+}
+
+.seat20 {
+  left: 552px;
+}
+
+.seat21 {
+  left: 582px;
+}
+
+.seat22 {
+  left: 582px;
+}
+
+.seat23 {
+  left: 641px;
+}
+
+.seat24 {
+  left: 641px;
+}
+
+.seat25 {
+  left: 671px;
+}
+
+.seat26 {
+  left: 671px;
+}
+
+.seat27 {
+  left: 731px;
+}
+
+.seat28 {
+  left: 731px;
+}
+
+.seat29 {
+  left: 761px;
+}
+
+.seat30 {
+  left: 761px;
+}
+
+.seat31 {
+  left: 820px;
+}
+
+.seat32 {
+  left: 820px;
+}
+
+.seat33 {
+  left: 135px;
+}
+
+.seat34 {
+  left: 178px;
+}
+
+.seat35 {
+  left: 224px;
+}
+
+.seat36 {
+  left: 267px;
+}
+
+.seat37 {
+  left: 313px;
+}
+
+.seat38 {
+  left: 357px;
+}
+
+.seat39 {
+  left: 403px;
+}
+
+.seat40 {
+  left: 446px;
+}
+
+.seat41 {
+  left: 492px;
+}
+
+.seat42 {
+  left: 536px;
+}
+
+.seat43 {
+  left: 582px;
+}
+
+.seat44 {
+  left: 625px;
+}
+
+.seat45 {
+  left: 672px;
+}
+
+.seat46 {
+  left: 715px;
+}
+
+.seat47 {
+  left: 760px;
+}
+
+.seat48 {
+  left: 803px;
+}

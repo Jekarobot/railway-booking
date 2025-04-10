@@ -7,8 +7,10 @@ interface TrainDetailsContextProps {
   departureTrainId: string
   setArrivalTrainId: (id: string) => void
   setDepartureTrainId: (id: string) => void
-  selectedTicket: RouteItem | null
-  setSelectedTicket: (ticket: RouteItem | null) => void
+  selectedArrivalTicket: RouteItem | null
+  setSelectedArrivalTicket: (ticket: RouteItem | null) => void
+  selectedDepartureTicket: RouteItem | null
+  setSelectedDepartureTicket: (ticket: RouteItem | null) => void
   arrivalSeatsData: any[] | null
   departureSeatsData: any[] | null
   loading: boolean | undefined
@@ -20,15 +22,20 @@ const TrainDetailsContext = createContext<TrainDetailsContextProps | undefined>(
 export const TrainDetailsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [arrivalTrainId, setArrivalTrainId] = useState<string>('')
   const [departureTrainId, setDepartureTrainId] = useState<string>('')
-  const [selectedTicket, setSelectedTicket] = useState<RouteItem | null>(null)
+  const [selectedArrivalTicket, setSelectedArrivalTicket] = useState<RouteItem | null>(null)
+  const [selectedDepartureTicket, setSelectedDepartureTicket] = useState<RouteItem | null>(null)
 
   // Вызываем хук API для обоих поездов
   const arrivalFetch = useRoutesSeatsApi(arrivalTrainId)
   const departureFetch = useRoutesSeatsApi(departureTrainId)
 
   useEffect(() => {
-    console.log('SelectedTicket:', selectedTicket)
-  }, [selectedTicket])
+    console.log('SelectedArrivalTicket:', selectedArrivalTicket)
+  }, [selectedArrivalTicket])
+
+  useEffect(() => {
+    console.log('SelectedDepartureTicket:', selectedDepartureTicket)
+  }, [selectedDepartureTicket])
 
   useEffect(() => {
     console.log('TrainDetailsProvider: arrivalSeatsData', arrivalFetch.data)
@@ -42,8 +49,10 @@ export const TrainDetailsProvider: React.FC<{ children: React.ReactNode }> = ({ 
         departureTrainId,
         setArrivalTrainId,
         setDepartureTrainId,
-        selectedTicket,
-        setSelectedTicket,
+        selectedArrivalTicket,
+        setSelectedArrivalTicket,
+        selectedDepartureTicket,
+        setSelectedDepartureTicket,
         arrivalSeatsData: arrivalFetch?.data ?? null,
         departureSeatsData: departureFetch?.data ?? null,
         loading: arrivalFetch?.loading || departureFetch?.loading,

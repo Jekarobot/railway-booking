@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './TicketDetails.module.css'
 import { useTrainDetails } from '../../../providers/TrainDetailsProvider/TrainDetailsProvider'
 import TicketDetailsRoute from './TicketDetailsRoute/TicketDetailsRoute'
@@ -8,8 +8,7 @@ interface TicketDetailsProps {
 }
 
 const TicketDetails: React.FC<TicketDetailsProps> = ({ onBack }) => {
-  const { arrivalTrainId, departureTrainId, arrivalSeatsData, departureSeatsData, selectedTicket } =
-    useTrainDetails()
+  const { departureTrainId } = useTrainDetails()
 
   return (
     <div className={styles.ticketDetails}>

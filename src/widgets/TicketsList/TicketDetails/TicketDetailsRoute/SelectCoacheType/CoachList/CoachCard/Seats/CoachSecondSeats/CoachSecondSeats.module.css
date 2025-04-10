@@ -1,0 +1,202 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coachSecond {
+  width: 921px;
+  height: 145px;
+  background-image: url('src/shared/assets/coachSchemes/SecondCoach.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.coachNumberSecond {
+  width: 32px;
+  height: 24px;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 41px;
+}
+
+.coachNumberSecondText {
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.currentPrice {
+  align-self: flex-end;
+  margin-right: 38px;
+}
+
+.currentPriceText {
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffa800;
+}
+
+.currentPriceIcon {
+  width: 14px;
+  height: 17px;
+}
+
+.seat {
+  width: 26px;
+  height: 31px;
+  background-color: #f2f2f2;
+  display: inline;
+  position: absolute;
+  top: 29px;
+  box-sizing: border-box;
+  font-weight: 700;
+}
+
+.seatBottom {
+  top: 60px;
+  left: 5px;
+  height: 26px;
+}
+
+.seatUnavailable {
+  background-color: #cccccc;
+}
+
+.seatSelected {
+  border: 2px #ffa800 solid;
+}
+
+.seat1 {
+  left: 133px;
+}
+
+.seat2 {
+  left: 133px;
+}
+
+.seat3 {
+  left: 194px;
+}
+
+.seat4 {
+  left: 194px;
+}
+
+.seat5 {
+  left: 224px;
+}
+
+.seat6 {
+  left: 224px;
+}
+
+.seat7 {
+  left: 283px;
+}
+
+.seat8 {
+  left: 283px;
+}
+
+.seat9 {
+  left: 313px;
+}
+
+.seat10 {
+  left: 313px;
+}
+
+.seat11 {
+  left: 372px;
+}
+
+.seat12 {
+  left: 372px;
+}
+
+.seat13 {
+  left: 403px;
+}
+
+.seat14 {
+  left: 403px;
+}
+
+.seat15 {
+  left: 462px;
+}
+
+.seat16 {
+  left: 462px;
+}
+
+.seat17 {
+  left: 492px;
+}
+
+.seat18 {
+  left: 492px;
+}
+
+.seat19 {
+  left: 552px;
+}
+
+.seat20 {
+  left: 552px;
+}
+
+.seat21 {
+  left: 582px;
+}
+
+.seat22 {
+  left: 582px;
+}
+
+.seat23 {
+  left: 641px;
+}
+
+.seat24 {
+  left: 641px;
+}
+
+.seat25 {
+  left: 671px;
+}
+
+.seat26 {
+  left: 671px;
+}
+
+.seat27 {
+  left: 731px;
+}
+
+.seat28 {
+  left: 731px;
+}
+
+.seat29 {
+  left: 761px;
+}
+
+.seat30 {
+  left: 761px;
+}
+
+.seat31 {
+  left: 820px;
+}
+
+.seat32 {
+  left: 820px;
+}

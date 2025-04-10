@@ -1,0 +1,36 @@
+.main {
+  border-top: 1px #c4c4c4 solid;
+}
+
+.header {
+  font-weight: 700;
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.icon {
+  fill: #928f94;
+}
+
+.iconActive {
+  fill: #ffa800;
+}
+
+.nameActive,
+.name {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.nameActive {
+  color: #ffa800;
+}
+
+.name {
+  color: #928f94;
+}

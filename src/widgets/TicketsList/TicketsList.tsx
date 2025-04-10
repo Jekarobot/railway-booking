@@ -17,9 +17,10 @@ const TicketsList: React.FC = () => {
     departureTrainId,
     setArrivalTrainId,
     setDepartureTrainId,
-    setSelectedTicket,
+    setSelectedArrivalTicket,
+    setSelectedDepartureTicket,
   } = useTrainDetails()
-  const { updateOrder } = useOrder()
+  const { updateOrder, clearPrice } = useOrder()
   const [currentPage, setCurrentPage] = useState(1)
   const [isRouteSelected, setIsRouteSelected] = useState(false)
 
@@ -44,6 +45,7 @@ const TicketsList: React.FC = () => {
     // Проверка на наличие departure и arrival
     if (ticket.departure && ticket.departure._id) {
       setArrivalTrainId(ticket.departure._id)
+      setSelectedArrivalTicket(ticket)
       updateOrder({
         arrival: {
           route_direction_id: ticket.departure._id,
@@ -53,7 +55,9 @@ const TicketsList: React.FC = () => {
     }
 
     if (ticket.arrival && ticket.arrival._id) {
+      // Для теста комментить это и раскоментить 3-й блок
       setDepartureTrainId(ticket.arrival._id)
+      setSelectedDepartureTicket(ticket)
       updateOrder({
         departure: {
           route_direction_id: ticket.arrival._id,
@@ -62,7 +66,17 @@ const TicketsList: React.FC = () => {
       })
     }
 
-    setSelectedTicket(ticket) // Устанавливаем выбранный билет
+    // if (ticket.departure && ticket.departure._id) {
+    //   //Тестовый блок
+    //   setDepartureTrainId(ticket.departure._id)
+    //   setSelectedDepartureTicket(ticket)
+    //   updateOrder({
+    //     departure: {
+    //       route_direction_id: ticket.departure._id,
+    //       seats: [],
+    //     },
+    //   })
+    // }
   } // Тут из-за бага сервера id умышленно поменяны места
   return (
     <div className={styles.ticketsList}>
@@ -72,7 +86,9 @@ const TicketsList: React.FC = () => {
             setIsRouteSelected(false)
             setArrivalTrainId('')
             setDepartureTrainId('')
-            setSelectedTicket(null)
+            setSelectedArrivalTicket(null)
+            setSelectedDepartureTicket(null)
+            clearPrice()
             updateOrder({
               departure: {
                 route_direction_id: '',

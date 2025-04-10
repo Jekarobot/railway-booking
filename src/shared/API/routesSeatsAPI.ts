@@ -30,9 +30,9 @@ const useRoutesSeatsApi = (routeId: string) => {
 
   // console.log(`Fetch status: ${fetchResult.loading ? 'Loading' : 'Completed'}`)
 
-  if (routeId) {
-    console.log(`API response: ${JSON.stringify(fetchResult.data)}`)
-  }
+  // if (routeId) {
+  //   console.log(`API response: ${JSON.stringify(fetchResult.data)}`)
+  // }
 
   return fetchResult
 }

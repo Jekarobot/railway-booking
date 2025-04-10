@@ -15,6 +15,7 @@ export interface Seat {
   seat_number: number | null // Номер места в вагоне
   is_child: boolean // Детский билет
   include_children_seat: boolean // Необходимо ли доп. место для билета «Детский без места»?
+  total_price?: number
 }
 
 export interface RouteDetails {

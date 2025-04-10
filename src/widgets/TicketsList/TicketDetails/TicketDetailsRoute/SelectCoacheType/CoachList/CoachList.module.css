@@ -1,0 +1,35 @@
+.panel {
+  height: 37px;
+  background-color: #ffa80070;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 33px;
+  padding-right: 11px;
+}
+
+.mainLeft {
+  display: flex;
+  gap: 3px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.coachButton {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.activeCoachButton {
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+}
+
+.textRight {
+  font-weight: 400;
+  font-size: 16px;
+}

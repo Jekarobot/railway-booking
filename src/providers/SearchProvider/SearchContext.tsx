@@ -45,13 +45,13 @@ const defaultSearchParams: Routes = {
   sort: 'date',
 }
 
-const getCurrentDateFormatted = (): string => {
-  const date = new Date()
-  const day = date.getDate().toString().padStart(2, '0')
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const year = date.getFullYear().toString()
-  return `${day}.${month}.${year}`
-}
+// const getCurrentDateFormatted = (): string => {
+//   const date = new Date()
+//   const day = date.getDate().toString().padStart(2, '0')
+//   const month = (date.getMonth() + 1).toString().padStart(2, '0')
+//   const year = date.getFullYear().toString()
+//   return `${day}.${month}.${year}`
+// }
 
 const SearchContext = createContext<SearchContextProps | undefined>(undefined)
 
@@ -88,17 +88,17 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     })
   }
 
-  useEffect(() => {
-    console.log('Current searchParams:', searchParams)
-  }, [searchParams])
+  // useEffect(() => {
+  //   console.log('Current searchParams:', searchParams)
+  // }, [searchParams])
 
-  useEffect(() => {
-    console.log('RoutesResponse updated:', routesResponse)
-  }, [routesResponse])
+  // useEffect(() => {
+  //   console.log('RoutesResponse updated:', routesResponse)
+  // }, [routesResponse])
 
-  useEffect(() => {
-    console.log('Loading state changed:', loading)
-  }, [loading])
+  // useEffect(() => {
+  //   console.log('Loading state changed:', loading)
+  // }, [loading])
 
   const resetSearchParameters = () => {
     setSearchParams(defaultSearchParams)

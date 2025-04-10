@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './PlaceCountInputs.module.css'
 import { useOrder } from '../../../../../providers/OrderBuildProvider/OrderContext'
-import { TicketDetails, RouteDetails, Seat } from '../../../../../shared/types/Order'
+import { Seat } from '../../../../../shared/types/Order'
 
 interface PlaceCountInputsProps {
   isDeparture: boolean
@@ -139,7 +139,7 @@ const PlaceCountInputs: React.FC<PlaceCountInputsProps> = ({ isDeparture }) => {
   return (
     <div className={styles.main}>
       <p className={styles.head}>Количество билетов</p>
-      <div className={styles.inputsContainer}>
+      <div className={styles.inputsContainer} id="inputsContainer">
         <div className={styles.adultContainer}>
           <label htmlFor="adultInput" className={styles.inputLabelAdult}>
             Взрослых —
@@ -149,6 +149,7 @@ const PlaceCountInputs: React.FC<PlaceCountInputsProps> = ({ isDeparture }) => {
             id="adultInput"
             className={styles.adultInput}
             onChange={updateValueAdults}
+            defaultValue={0}
             min={1}
             max={3}
           ></input>
@@ -163,7 +164,8 @@ const PlaceCountInputs: React.FC<PlaceCountInputsProps> = ({ isDeparture }) => {
             id="kidsInput"
             className={styles.kidsInput}
             onChange={updateValueKids}
-            min={1}
+            defaultValue={0}
+            min={0}
             max={3}
           ></input>
           <p className={styles.kidsText}>
@@ -180,7 +182,8 @@ const PlaceCountInputs: React.FC<PlaceCountInputsProps> = ({ isDeparture }) => {
             id="kidsNoPlaceInput"
             className={styles.kidsNoPlaceInput}
             onChange={updateValueKidsNoPlace}
-            min={1}
+            defaultValue={0}
+            min={0}
             max={3}
           ></input>
         </div>

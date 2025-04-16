@@ -7,6 +7,10 @@ interface PlaceCountInputsProps {
   isDeparture: boolean
 }
 
+const generateUniqueId = () => {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`
+}
+
 const PlaceCountInputs: React.FC<PlaceCountInputsProps> = ({ isDeparture }) => {
   const { updateOrder } = useOrder()
 
@@ -20,6 +24,7 @@ const PlaceCountInputs: React.FC<PlaceCountInputsProps> = ({ isDeparture }) => {
       const filteredSeats = prevSeats.filter((seat) => seat.is_child)
 
       const newAdultSeats: Seat[] = Array.from({ length: value }, () => ({
+        seat_id: generateUniqueId(),
         coach_id: '',
         seat_number: null,
         is_child: false, // Взрослый билет
@@ -65,6 +70,7 @@ const PlaceCountInputs: React.FC<PlaceCountInputsProps> = ({ isDeparture }) => {
       const filteredSeats = prevSeats.filter((seat) => !seat.is_child)
 
       const newKidSeats: Seat[] = Array.from({ length: value }, () => ({
+        seat_id: generateUniqueId(),
         coach_id: '',
         seat_number: null,
         is_child: true, // Детский билет

@@ -10,7 +10,11 @@ import { useOrder } from '../../providers/OrderBuildProvider/OrderContext'
 import { Routes } from '../../shared/types/Routes'
 import { RouteItem } from '../../shared/types/RoutesResponse'
 
-const TicketsList: React.FC = () => {
+interface TicketsListProps {
+  setActiveStep: (step: number) => void
+}
+
+const TicketsList: React.FC<TicketsListProps> = ({ setActiveStep }) => {
   const { updateSearchParams, routesResponse, searchParams } = useSearchContext()
   const {
     arrivalTrainId,
@@ -44,6 +48,7 @@ const TicketsList: React.FC = () => {
   const handleSelectTicket = (ticket: RouteItem) => {
     // Проверка на наличие departure и arrival
     if (ticket.departure && ticket.departure._id) {
+      // Тут из-за бага сервера id умышленно поменяны места
       setArrivalTrainId(ticket.departure._id)
       setSelectedArrivalTicket(ticket)
       updateOrder({
@@ -77,11 +82,12 @@ const TicketsList: React.FC = () => {
     //     },
     //   })
     // }
-  } // Тут из-за бага сервера id умышленно поменяны места
+  }
   return (
     <div className={styles.ticketsList}>
       {isRouteSelected ? (
         <TicketDetails
+          setActiveStep={setActiveStep}
           onBack={() => {
             setIsRouteSelected(false)
             setArrivalTrainId('')

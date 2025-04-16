@@ -1,0 +1,66 @@
+.maleAndDateContainer {
+  display: flex;
+  margin-top: 50px;
+  gap: 35px;
+}
+
+.maleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.maleButton {
+  width: 204px;
+  height: 50px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  display: flex;
+}
+
+.radioLabelMale,
+.radioLabelFemale {
+  width: 102px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+
+.radioLabelMale {
+  border-right: 1px solid #928f94;
+  padding-left: 29px;
+}
+
+.radioLabelFemale {
+  padding-left: 27px;
+}
+
+.radioLabelActive {
+  background-color: #ffa800;
+}
+
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputDate {
+  padding: 10px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 24px;
+  color: #292929;
+  width: 260px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.inputError {
+  border: 1px #ff3d00c2 solid;
+  color: #ff3d00cc;
+}

@@ -1,0 +1,150 @@
+.passengerMain {
+  width: 960px;
+  border: 1px #c4c4c4 solid;
+  background-color: #ffffff;
+}
+
+.headContainer {
+  height: 97px;
+  background-color: #ffffff;
+
+  border-bottom: none;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  padding: 0 23px;
+
+  box-sizing: border-box;
+}
+
+.headContainerActive {
+  height: 107px;
+  background-color: #f9f9f9;
+  border-bottom: 1px #928f94 dashed;
+}
+
+.buttonImgContainer {
+  border: 2px #ffa800 solid;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonImgContainerActive {
+  border: 2px #928f94 solid;
+}
+
+.deleteBtn {
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+}
+
+.crossHidden {
+  display: none;
+}
+
+.headText {
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.passengerInfoHidden {
+  display: none;
+}
+
+.mainPassengerInfo {
+  padding: 38px 36px 31px 36px;
+  border-bottom: 1px #928f94 dashed;
+}
+
+.nameContainer {
+  display: flex;
+  margin-top: 45px;
+  gap: 25px;
+}
+
+.invalidContainer {
+  display: flex;
+  margin-top: 45px;
+  align-items: center;
+  gap: 20px;
+}
+
+.invalidButton {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.invalidButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: #292929;
+  display: none;
+}
+
+.invalidButton:checked::after {
+  content: '✔';
+  display: block;
+}
+
+.nextBtnContainer {
+  display: flex;
+  height: 51px;
+  align-items: center;
+
+  padding: 37px 30px 31px 24px;
+}
+
+.nextBtn {
+  width: 303px;
+  height: 52px;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  margin-left: auto;
+
+  font-weight: 700;
+  font-size: 24px;
+  color: #292929;
+}
+
+.nextBtnHidden {
+  display: none;
+}
+
+.nextBtnContainerRed {
+  background-color: #ff3d0061;
+}
+
+.nextBtnContainerGreen {
+  background-color: #b2f6a1;
+}
+
+.error,
+.success {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.success {
+  color: white;
+}

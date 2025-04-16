@@ -3,6 +3,7 @@ import styles from './CoachFourthSeats.module.css'
 import { Seat, Coach } from '../../../../../../../../../shared/types/DetailsResponse'
 import { useOrder } from '../../../../../../../../../providers/OrderBuildProvider/OrderContext'
 import RubleIcon from '../../../../../../../../../shared/assets/svg/Ruble.svg'
+import fourthCoachImage from '../../../../../../../../../shared/assets/coachSchemes/FourthCoach.png'
 
 interface CoachFourthSeatsProps {
   seatPrice: number[]
@@ -35,7 +36,14 @@ const CoachFourthSeats: React.FC<CoachFourthSeatsProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.coachFourth}>
+      <div
+        className={styles.coachFourth}
+        style={{
+          backgroundImage: `url(${fourthCoachImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className={styles.coachNumberFourth}>
           <p className={styles.coachNumberFourthText}>{coach.coach_number}</p>
         </div>

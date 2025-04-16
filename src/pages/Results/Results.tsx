@@ -16,7 +16,7 @@ const Results: React.FC = () => {
     if (!loading && step === 0) {
       setStep(1) // Показываем результаты, только если step был 0
     }
-  }, [loading, step]) // Добавим `step` в зависимости
+  }, [loading, step])
 
   return (
     <div className={styles.results}>

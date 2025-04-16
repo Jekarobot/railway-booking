@@ -3,6 +3,7 @@ import styles from './CoachSecondSeats.module.css'
 import { Seat, Coach } from '../../../../../../../../../shared/types/DetailsResponse'
 import { useOrder } from '../../../../../../../../../providers/OrderBuildProvider/OrderContext'
 import RubleIcon from '../../../../../../../../../shared/assets/svg/Ruble.svg'
+import secondCoachImage from '../../../../../../../../../shared/assets/coachSchemes/SecondCoach.png'
 
 interface CoachSecondSeatsProps {
   seatPrice: number[]
@@ -48,7 +49,14 @@ const CoachSecondSeats: React.FC<CoachSecondSeatsProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.coachSecond}>
+      <div
+        className={styles.coachSecond}
+        style={{
+          backgroundImage: `url(${secondCoachImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }} // инлайновые стили, чтобы точно подтянулся фон, с ним были проблемы
+      >
         <div className={styles.coachNumberSecond}>
           <p className={styles.coachNumberSecondText}>{coach.coach_number}</p>
         </div>

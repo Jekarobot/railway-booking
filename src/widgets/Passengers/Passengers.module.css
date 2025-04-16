@@ -1,7 +1,31 @@
-.title {
-  text-transform: uppercase;
-  font-weight: 500;
+.passengersContainer {
+  width: 960px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.addPassenger {
+  height: 97px;
+  background-color: #ffffff;
+  border: 1px #c4c4c4 solid;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 0 23px;
+
+  box-sizing: border-box;
+}
+
+.addPassengerText {
   font-size: 30px;
+  font-weight: 400;
+  color: #292929;
 }
 
 .nextStep {

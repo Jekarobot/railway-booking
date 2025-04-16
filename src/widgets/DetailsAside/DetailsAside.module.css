@@ -1,0 +1,226 @@
+.detailsAside {
+  width: 360px;
+  background-color: #3e3c41;
+}
+
+.header {
+  height: 108px;
+  border-bottom: 1px #e5e5e5 solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerText {
+  color: #e5e5e5;
+  font-weight: 500;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.iconArrow {
+  height: 26px;
+  width: 32px;
+}
+
+.containerHead {
+  padding: 16px 27px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toText,
+.fromText {
+  font-weight: 700;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.dateHead {
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 25px;
+}
+
+.toggleBtn {
+  margin-left: 60px;
+  width: 20px;
+  height: 20px;
+  font-size: 30px;
+  color: #c4c4c4;
+  border: 2px #c4c4c4 solid;
+  border-radius: 5px;
+  display: flex;
+  align-self: center;
+  padding: 1px;
+}
+
+.toggleBtnDeparture {
+  margin-left: 28px;
+}
+
+.iconButton {
+  width: 14px;
+  height: 14px;
+}
+
+.containerMainExpanded {
+  display: block;
+  padding: 0 27px 70px 27px;
+  border-bottom: 1px #e5e5e5 solid;
+}
+
+.containerMainHidden,
+.adultContainerMainHidden {
+  display: none;
+}
+
+.trainNumberContainer,
+.trainNameContainer,
+.timesContainer,
+.datesContainer,
+.citiesContainer,
+.railwaysContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trainNameContainer {
+  align-items: baseline;
+}
+
+.timesContainer {
+  margin-top: 5px;
+}
+
+.trainNumberText,
+.trainNumberText {
+  color: #e5e5e5;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.trainNumber,
+.timeFrom,
+.timeTo {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0;
+}
+
+.trainName1,
+.trainName2 {
+  margin: 0;
+  text-align: end;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.durationContainer {
+  display: flex;
+  margin: 45px 0 0 0;
+  justify-content: center;
+}
+
+.duration {
+  font-weight: 400;
+  font-size: 18px;
+  color: #e5e5e5;
+  margin: 0;
+}
+
+.dateFrom,
+.dateTo {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+  margin-top: 10px;
+}
+
+.cityFrom,
+.cityTo {
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.railwayFrom,
+.railwayTo {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+  margin: 0;
+}
+
+.railwayTo {
+  text-align: end;
+}
+
+.containerMainExpanded {
+  display: block;
+  padding: 0 27px 40px 27px;
+  border-bottom: 1px #e5e5e5 solid;
+}
+
+.adultContainer,
+.childContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rubleIcon {
+  width: 14px;
+  height: 17px;
+}
+
+.rubleIconFinal {
+  fill: #e5e5e5;
+}
+
+.adultCount,
+.childCount {
+  font-weight: 400;
+  font-size: 18px;
+  color: #e5e5e5;
+}
+
+.adultPrice,
+.childPrice {
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.finalPriceContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 46px 27px 40px 27px;
+}
+
+.finalPrice {
+  display: flex;
+  align-items: center;
+}
+
+.finalPriceText {
+  font-weight: 700;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.finalPrice {
+  font-weight: 700;
+  font-size: 48px;
+  color: #ffa800;
+}

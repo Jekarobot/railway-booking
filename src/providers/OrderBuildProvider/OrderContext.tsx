@@ -9,11 +9,13 @@ interface OrderContextType {
   removePrice: (removedPrice: number) => void
   clearPrice: () => void
   toggleSeat: (
-    seatData: Omit<Seat, 'person_info' | 'is_child' | 'include_children_seat'>,
+    seatData: Omit<Seat, 'person_info' | 'is_child' | 'include_children_seat' | 'seat_id'>,
     isDeparture: boolean,
     seatPrice: number
   ) => void
   isSeatSelected: (seat_number: number, coach_id: string, isDeparture: boolean) => boolean
+  setPassengerAge: (isDeparture: boolean, id: string, isChild: boolean) => void
+  removePassenger: (isDeparture: boolean, seat_id: string) => void
 }
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined)
@@ -79,7 +81,7 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const toggleSeat = (
-    seatData: Omit<Seat, 'person_info' | 'is_child' | 'include_children_seat'>,
+    seatData: Omit<Seat, 'person_info' | 'is_child' | 'include_children_seat' | 'seat_id'>,
     isDeparture: boolean,
     seatPrice: number
   ) => {
@@ -144,6 +146,59 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
     return target.some((seat) => seat.seat_number === seat_number && seat.coach_id === coach_id)
   }
 
+  const setPassengerAge = (isDeparture: boolean, seat_id: string, isChild: boolean) => {
+    updateOrder((prev) => {
+      const target = isDeparture ? 'departure' : 'arrival'
+      const seats = [...prev[target].seats]
+
+      const adultCount = seats.filter((s) => !s.is_child).length
+      const childCount = seats.filter((s) => s.is_child).length
+
+      const currentIndex = seats.findIndex((s) => s.seat_id === seat_id)
+      if (currentIndex === -1) return prev
+
+      const current = seats[currentIndex]
+      const updated = { ...current, is_child: isChild }
+
+      if (isChild && childCount >= 3 && !current.is_child) {
+        alert('Максимум 3 детских билета')
+        return prev
+      }
+
+      if (!isChild && adultCount >= 3 && current.is_child) {
+        alert('Максимум 3 взрослых билета')
+        return prev
+      }
+
+      seats[currentIndex] = updated
+
+      return {
+        ...prev,
+        [target]: {
+          ...prev[target],
+          seats,
+        },
+      }
+    })
+  }
+
+  const removePassenger = (isDeparture: boolean, seat_id: string) => {
+    updateOrder((prev) => {
+      const target = isDeparture ? 'departure' : 'arrival'
+      const seats = prev[target].seats
+
+      const updatedSeats = seats.filter((seat) => seat.seat_id !== seat_id)
+
+      return {
+        ...prev,
+        [target]: {
+          ...prev[target],
+          seats: updatedSeats,
+        },
+      }
+    })
+  }
+
   useEffect(() => {
     console.log('Текущее состояние заказа:', order)
     console.log('Текущая цена:', price)
@@ -160,6 +215,8 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
         clearPrice,
         toggleSeat,
         isSeatSelected,
+        setPassengerAge,
+        removePassenger,
       }}
     >
       {children}

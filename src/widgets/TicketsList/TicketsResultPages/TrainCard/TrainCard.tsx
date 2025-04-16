@@ -5,7 +5,7 @@ import { useSearchContext } from '../../../../providers/SearchProvider/SearchCon
 import {
   capitalizeCityName,
   formatSecondsToHHMM,
-  formatLargeSecondsToHHMM,
+  formatUnixTimestampToTime,
 } from '../../../../shared/hooks/useFormatTools.ts'
 import ArrowRight from '../../../../shared/assets/svg/ArrowTicketRight.svg'
 import ArrowLeft from '../../../../shared/assets/svg/ArrowTicketLeft.svg'
@@ -53,7 +53,7 @@ const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
         <div className={styles.arrivalDirection}>
           <div className={styles.arrivalDirection__from}>
             <p className={styles.directions__landingTime}>
-              {formatLargeSecondsToHHMM(ticket.departure.from.datetime)}
+              {formatUnixTimestampToTime(ticket.departure.from.datetime)}
             </p>
             <p className={styles.directions__city}>
               {capitalizeCityName(ticket.departure.from.city?.name)}
@@ -70,7 +70,7 @@ const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
           </div>
           <div className={styles.arrivalDirection__to}>
             <p className={styles.directions__landingTime}>
-              {formatLargeSecondsToHHMM(ticket.departure.to.datetime)}
+              {formatUnixTimestampToTime(ticket.departure.to.datetime)}
             </p>
             <p className={styles.directions__city}>
               {capitalizeCityName(ticket.departure.to.city?.name)}
@@ -82,7 +82,7 @@ const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
           <div className={styles.departureDirection}>
             <div className={styles.departureDirection__from}>
               <p className={styles.directions__landingTime}>
-                {formatLargeSecondsToHHMM(ticket.arrival.from.datetime)}
+                {formatUnixTimestampToTime(ticket.arrival.from.datetime)}
               </p>
               <p className={styles.directions__city}>
                 {capitalizeCityName(ticket.arrival.from.city?.name)}
@@ -99,7 +99,7 @@ const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
             </div>
             <div className={styles.arrivalDirection__to}>
               <p className={styles.directions__landingTime}>
-                {formatLargeSecondsToHHMM(ticket.arrival.to.datetime)}
+                {formatUnixTimestampToTime(ticket.arrival.to.datetime)}
               </p>
               <p className={styles.directions__city}>
                 {capitalizeCityName(ticket.arrival.to.city?.name)}

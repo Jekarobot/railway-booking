@@ -8,9 +8,6 @@
 .coachSecond {
   width: 921px;
   height: 145px;
-  background-image: url('src/shared/assets/coachSchemes/SecondCoach.png');
-  background-size: cover;
-  background-position: center;
   position: relative;
 }
 

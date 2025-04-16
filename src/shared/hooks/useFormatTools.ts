@@ -17,11 +17,21 @@ export function formatSecondsToHHMM(seconds: number | undefined): string {
   return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
 }
 
-// Функция для форматирования больших секунд (например, более суток) в формат HH:MM
-export function formatLargeSecondsToHHMM(seconds: number | undefined): string {
+// Функция для форматирования даты из Unix timestamp в формат HH:MM
+export function formatUnixTimestampToTime(seconds: number | undefined): string {
   if (seconds === undefined) return '00:00'
-  const totalMinutes = Math.floor(seconds / 60)
-  const hours = Math.floor(totalMinutes / 60) % 24
-  const minutes = totalMinutes % 60
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+  const date = new Date(seconds * 1000) // Умножаем на 1000, чтобы преобразовать секунды в миллисекунды
+  const hours = date.getUTCHours().toString().padStart(2, '0')
+  const minutes = date.getUTCMinutes().toString().padStart(2, '0')
+  return `${hours}:${minutes}`
+}
+
+// Функция для форматирования даты из Unix timestamp в формат DD.MM.YYYY
+export function formatUnixTimestampToDate(timestamp: number | undefined): string {
+  if (timestamp === undefined) return '00:00'
+  const date = new Date(timestamp * 1000) // Умножаем на 1000, чтобы преобразовать секунды в миллисекунды
+  const day = date.getUTCDate().toString().padStart(2, '0')
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0') // Месяцы начинаются с 0
+  const year = date.getUTCFullYear()
+  return `${day}.${month}.${year}`
 }

@@ -3,6 +3,8 @@ import styles from './renderStep.module.css'
 import FilterAside from '../../../widgets/FilterAside/FilterAside'
 import LastTickets from '../../../widgets/LastTickets/LastTickets'
 import TicketsList from '../../../widgets/TicketsList/TicketsList'
+import DetailsAside from '../../../widgets/DetailsAside/DetailsAside'
+import Passengers from '../../../widgets/Passengers/Passengers'
 
 interface RenderStepProps {
   activeStep: number
@@ -10,7 +12,7 @@ interface RenderStepProps {
   tickets: any[]
 }
 
-const RenderStep: React.FC<RenderStepProps> = ({ activeStep }) => {
+const RenderStep: React.FC<RenderStepProps> = ({ activeStep, setActiveStep }) => {
   switch (activeStep) {
     case 0:
       return (
@@ -28,8 +30,30 @@ const RenderStep: React.FC<RenderStepProps> = ({ activeStep }) => {
             <LastTickets />
           </aside>
           <main className={`${styles.main}`}>
-            <TicketsList />
+            <TicketsList setActiveStep={setActiveStep} />
           </main>
+        </div>
+      )
+
+    case 2:
+      return (
+        <div className={`${styles.step2} ${styles.step}`}>
+          <aside className={`${styles.step2__aside} ${styles.aside}`}>
+            <DetailsAside />
+          </aside>
+          <main className={`${styles.main}`}>
+            <Passengers setActiveStep={setActiveStep} />
+          </main>
+        </div>
+      )
+
+    case 3:
+      return (
+        <div className={`${styles.step3} ${styles.step}`}>
+          <aside className={`${styles.step3__aside} ${styles.aside}`}>
+            <DetailsAside />
+          </aside>
+          <main className={`${styles.main}`}>{/* <Billing /> */}</main>
         </div>
       )
 

@@ -9,7 +9,7 @@ import TrainTicketSmall from '../../../../shared/assets/svg/SVGR/TrainTicketSmal
 import {
   capitalizeCityName,
   formatSecondsToHHMM,
-  formatLargeSecondsToHHMM,
+  formatUnixTimestampToTime,
 } from '../../../../shared/hooks/useFormatTools.ts'
 import { useSearchContext } from '../../../../providers/SearchProvider/SearchContext.tsx'
 import { useTrainDetails } from '../../../../providers/TrainDetailsProvider/TrainDetailsProvider.tsx'
@@ -78,7 +78,7 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
               <div className={styles.arrivalDirection__from}>
                 <p className={styles.directions__landingTime}>
-                  {formatLargeSecondsToHHMM(selectedDepartureTicket?.departure.from.datetime)}
+                  {formatUnixTimestampToTime(selectedDepartureTicket?.departure.from.datetime)}
                 </p>
                 <p className={styles.directions__city}>
                   {capitalizeCityName(selectedDepartureTicket?.departure.from.city?.name)}
@@ -87,10 +87,10 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
                   {selectedDepartureTicket?.departure.from.railway_station_name}
                 </p>
               </div>
-              <img className={styles.directions__arrow} src={ArrowTicketRight} alt="Arrow Right" />
+              <img className={styles.directions__arrow} src={ArrowTicketLeft} alt="Arrow Left" />
               <div className={styles.arrivalDirection__to}>
                 <p className={styles.directions__landingTime}>
-                  {formatLargeSecondsToHHMM(selectedDepartureTicket?.departure.to.datetime)}
+                  {formatUnixTimestampToTime(selectedDepartureTicket?.departure.to.datetime)}
                 </p>
                 <p className={styles.directions__city}>
                   {capitalizeCityName(selectedDepartureTicket?.departure.to.city?.name)}
@@ -167,7 +167,7 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
               <div className={styles.arrivalDirection__from}>
                 <p className={styles.directions__landingTime}>
-                  {formatLargeSecondsToHHMM(selectedArrivalTicket?.departure.from.datetime)}
+                  {formatUnixTimestampToTime(selectedArrivalTicket?.departure.from.datetime)}
                 </p>
                 <p className={styles.directions__city}>
                   {capitalizeCityName(selectedArrivalTicket?.departure.from.city?.name)}
@@ -179,7 +179,7 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               <img className={styles.directions__arrow} src={ArrowTicketRight} alt="Arrow Right" />
               <div className={styles.arrivalDirection__to}>
                 <p className={styles.directions__landingTime}>
-                  {formatLargeSecondsToHHMM(selectedArrivalTicket?.departure.to.datetime)}
+                  {formatUnixTimestampToTime(selectedArrivalTicket?.departure.to.datetime)}
                 </p>
                 <p className={styles.directions__city}>
                   {capitalizeCityName(selectedArrivalTicket?.departure.to.city?.name)}

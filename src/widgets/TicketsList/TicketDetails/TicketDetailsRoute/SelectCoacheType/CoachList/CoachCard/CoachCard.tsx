@@ -111,6 +111,8 @@ const CoachCard: React.FC<CoachCardProps> = ({ coach, seats, activeType, isDepar
     return Math.floor(Math.random() * max)
   }
 
+  const seatPrices = calculateSeatPrice(coach, activeType)
+
   return (
     <div className={styles.coachCard}>
       <div className={styles.head}>
@@ -171,11 +173,11 @@ const CoachCard: React.FC<CoachCardProps> = ({ coach, seats, activeType, isDepar
           {activeType === 'second' && (
             <div>
               <div className={styles.topPriceContainer}>
-                <p className={styles.price}>{coach.top_price}</p>
+                <p className={styles.price}>{seatPrices[0]}</p>
                 <img src={RubleIcon} alt="Рублей" className={styles.priceIcon}></img>
               </div>
               <div className={styles.bottomPriceContainer}>
-                <p className={styles.price}>{coach.bottom_price}</p>
+                <p className={styles.price}>{seatPrices[1]}</p>
                 <img src={RubleIcon} alt="Рублей" className={styles.priceIcon}></img>
               </div>
             </div>
@@ -183,15 +185,15 @@ const CoachCard: React.FC<CoachCardProps> = ({ coach, seats, activeType, isDepar
           {activeType === 'third' && (
             <div>
               <div className={styles.topPriceContainer}>
-                <p className={styles.price}>{coach.top_price}</p>
+                <p className={styles.price}>{seatPrices[0]}</p>
                 <img src={RubleIcon} alt="Рублей" className={styles.priceIcon}></img>
               </div>
               <div className={styles.bottomPriceContainer}>
-                <p className={styles.price}>{coach.bottom_price}</p>
+                <p className={styles.price}>{seatPrices[1]}</p>
                 <img src={RubleIcon} alt="Рублей" className={styles.priceIcon}></img>
               </div>
               <div className={styles.sidePriceContainer}>
-                <p className={styles.price}>{coach.side_price}</p>
+                <p className={styles.price}>{seatPrices[2]}</p>
                 <img src={RubleIcon} alt="Рублей" className={styles.priceIcon}></img>
               </div>
             </div>
@@ -199,8 +201,7 @@ const CoachCard: React.FC<CoachCardProps> = ({ coach, seats, activeType, isDepar
           {(activeType === 'first' || activeType === 'fourth') && (
             <div>
               <div className={styles.topPriceContainer}>
-                {/* На случай, когда приходит 0, изначально было coach.price */}
-                <p className={styles.price}>{coach.price !== 0 ? coach.price : coach.top_price}</p>
+                <p className={styles.price}>{seatPrices[0]}</p>
                 <img src={RubleIcon} alt="Рублей" className={styles.priceIcon}></img>
               </div>
             </div>

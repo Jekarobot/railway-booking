@@ -1,0 +1,57 @@
+.alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 666px;
+  height: 505px;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0px 2px 2px 0px #00000040;
+  background-color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.logoContainer {
+  height: 66px;
+  padding-top: 41px;
+  padding-left: 48px;
+  border-bottom: 1px #928f94 dashed;
+}
+
+.errorTheme {
+  background-color: #ff3d0061;
+}
+
+.infoTheme {
+  background-color: #fff5005c;
+}
+
+.contentContainer {
+  height: 291px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 47px;
+  padding-right: 47px;
+  border-bottom: 1px #928f94 dashed;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 31px;
+}
+
+.closeButton {
+  border: 1px solid #292929;
+  width: 233px;
+  height: 52px;
+
+  font-weight: 700;
+  font-size: 24px;
+}

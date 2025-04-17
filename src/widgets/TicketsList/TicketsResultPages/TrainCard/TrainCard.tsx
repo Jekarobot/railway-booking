@@ -19,7 +19,7 @@ const TrainCard = (ticket: RouteItem & { onSelect: () => void }) => {
 
   const handleSelectSeats = () => {
     if (ticket.onSelect) {
-      ticket.onSelect() // Вызываем onSelect, если он передан
+      ticket.onSelect()
     }
   }
 

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { TicketDetails, Seat } from '../../shared/types/Order'
+import { usePopup } from '../PopupProvider/PopupContext'
 
 interface OrderContextType {
   order: TicketDetails
@@ -39,6 +40,8 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
       seats: [],
     },
   })
+
+  const { setShowPopup, setContent, setHeader, setPopupType } = usePopup()
 
   const [price, setPrice] = useState(0)
 
@@ -113,7 +116,10 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
         const freeIndex = currentSeats.findIndex((seat) => !seat.seat_number)
 
         if (freeIndex === -1) {
-          alert('Выберите больше пассажиров')
+          setPopupType('error')
+          setHeader('Выберите больше пассажиров')
+          setContent('Вы не указали количество пассажиров')
+          setShowPopup(true)
           return prev
         }
 
@@ -161,12 +167,18 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
       const isChild = !isAdult // для совместимости с is_child
 
       if (isChild && childCount >= 3 && !current.is_child) {
-        alert('Максимум 3 детских билета')
+        setPopupType('error')
+        setHeader('Может быть только 3 детских билета')
+        setContent('К сожалению можно указать только 3 детских билета')
+        setShowPopup(true)
         return prev
       }
 
       if (!isChild && adultCount >= 3 && current.is_child) {
-        alert('Максимум 3 взрослых билета')
+        setPopupType('error')
+        setHeader('Может быть только 3 взрослых билета')
+        setContent('К сожалению можно указать только 3 взрослых билета')
+        setShowPopup(true)
         return prev
       }
 

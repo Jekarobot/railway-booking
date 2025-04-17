@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Billing.module.css'
 import { useOrder } from '../../providers/OrderBuildProvider/OrderContext'
+import { usePopup } from '../../providers/PopupProvider/PopupContext'
 
 import NameInput from '../../entities/inputs/NameInput/NameInput'
 import PhoneAndEmailInput from '../../entities/inputs/PhoneAndEmailInput/PhoneAndEmailInput'
@@ -14,6 +15,7 @@ interface BillingProps {
 }
 
 const Billing: React.FC<BillingProps> = ({ setActiveStep }) => {
+  const { setShowPopup, setPopupType, setHeader, setContent } = usePopup()
   const { validate, wrongInput } = useOrderFormValidation()
   const { updateOrder } = useOrder()
 
@@ -73,7 +75,10 @@ const Billing: React.FC<BillingProps> = ({ setActiveStep }) => {
       })
       setActiveStep(4)
     } else {
-      alert('Пожалуйста, заполните все обязательные поля.')
+      setPopupType('error')
+      setHeader('Не заполнены данные')
+      setContent('Пожалуйста заполните все данные')
+      setShowPopup(true)
     }
   }
 

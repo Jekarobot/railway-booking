@@ -4,12 +4,14 @@ import { useOrder } from '../../providers/OrderBuildProvider/OrderContext'
 import Passenger from './Passenger/Passenger'
 import plus from '../../shared/assets/svg/Passenger/Plus.svg'
 import { PersonInfo } from '../../shared/types/Order'
+import { usePopup } from '../../providers/PopupProvider/PopupContext'
 
 interface PassengersProps {
   setActiveStep: (step: number) => void
 }
 
 const Passengers: React.FC<PassengersProps> = ({ setActiveStep }) => {
+  const { setShowPopup, setPopupType, setHeader, setContent } = usePopup()
   const { order, clearPrice } = useOrder()
 
   const [activePassenger, setActivePassenger] = useState([
@@ -57,7 +59,10 @@ const Passengers: React.FC<PassengersProps> = ({ setActiveStep }) => {
     if (validateFilledData()) {
       setActiveStep(3)
     } else {
-      alert('Не заполнены данные пассажира')
+      setPopupType('error')
+      setHeader('Не заполнены данные')
+      setContent('Пожалуйста заполните все данные')
+      setShowPopup(true)
       return
     }
   }

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './TicketsResultPages.module.css'
 import TrainCard from './TrainCard/TrainCard'
 import { RouteItem } from '../../../shared/types/RoutesResponse'
+import { usePopup } from '../../../providers/PopupProvider/PopupContext'
 
 interface TicketsResultPagesProps {
   tickets: RouteItem[] | undefined
@@ -9,6 +10,17 @@ interface TicketsResultPagesProps {
 }
 
 const TicketsResultPages: React.FC<TicketsResultPagesProps> = ({ tickets, onSelectTicket }) => {
+  const { setShowPopup, setHeader, setContent, setPopupType } = usePopup()
+
+  useEffect(() => {
+    if (tickets === undefined || (Array.isArray(tickets) && tickets.length === 0)) {
+      setPopupType('error')
+      setHeader('Ошибка')
+      setContent('Нет доступных маршрутов')
+      setShowPopup(true)
+    }
+  }, [tickets])
+
   return (
     <div className={styles.ticketsResultPages}>
       {tickets ? (

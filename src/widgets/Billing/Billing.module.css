@@ -1,0 +1,139 @@
+.billingMain {
+  width: 960px;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0px 2px 2px 0px #00000040;
+  background-color: #ffffff;
+}
+
+.headerContainerFirst,
+.headerContainerSecond {
+  height: 107px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+
+  padding-left: 35px;
+}
+
+.headerContainerFirst {
+  border-bottom: 1px #928f94 dashed;
+}
+
+.headerContainerSecond {
+  border-bottom: 1px #928f94 dashed;
+  border-top: 1px #928f94 dashed;
+}
+
+.header {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.inputs {
+  padding-left: 35px;
+  padding-top: 30px;
+}
+
+.nameContainer {
+  display: flex;
+  gap: 25px;
+}
+
+.phoneAndEmailContainer {
+  margin-top: 54px;
+  padding-bottom: 58px;
+}
+
+.paymentMethodContainer {
+  padding-top: 50px;
+  padding-left: 36px;
+  padding-bottom: 86px;
+}
+
+.paymentMethodContainerOnline {
+  border-bottom: 1px #928f94 dashed;
+  padding-bottom: 64px;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.paymentCheckbox {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.paymentCheckbox:checked {
+  border: 1px solid #ffa800;
+}
+
+.paymentCheckbox::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: #292929;
+  display: none;
+}
+
+.paymentCheckbox:checked::after {
+  content: '✔';
+  display: block;
+  color: #ffa800;
+}
+
+.paymentButtonText {
+  font-weight: 400;
+  font-size: 24px;
+  color: #928f94;
+}
+
+.paymentButtonTextActive {
+  color: #ffa800;
+}
+
+.onlinePayTypes {
+  display: flex;
+  gap: 56px;
+  margin-top: 28px;
+}
+
+.onlinePayType {
+  width: 184px;
+}
+
+.nextStep {
+  width: 323px;
+  height: 60px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px transparent solid;
+  margin-left: 640px;
+  margin-top: 100px;
+}
+
+.nextStepNonActive {
+  background-color: #928f94;
+}
+
+.nextStepActive {
+  background-color: #ffa800;
+}
+
+.nextStepActive:active {
+  background-color: transparent;
+  color: #ffa800;
+  border: 1px #ffa800 solid;
+}

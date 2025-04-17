@@ -14,7 +14,7 @@ const Results: React.FC = () => {
 
   useEffect(() => {
     if (!loading && step === 0) {
-      setStep(1) // Показываем результаты, только если step был 0
+      setStep(1)
     }
   }, [loading, step])
 

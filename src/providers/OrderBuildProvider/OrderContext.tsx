@@ -146,7 +146,7 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
     return target.some((seat) => seat.seat_number === seat_number && seat.coach_id === coach_id)
   }
 
-  const setPassengerAge = (isDeparture: boolean, seat_id: string, isChild: boolean) => {
+  const setPassengerAge = (isDeparture: boolean, seat_id: string, isAdult: boolean) => {
     updateOrder((prev) => {
       const target = isDeparture ? 'departure' : 'arrival'
       const seats = [...prev[target].seats]
@@ -158,7 +158,7 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
       if (currentIndex === -1) return prev
 
       const current = seats[currentIndex]
-      const updated = { ...current, is_child: isChild }
+      const isChild = !isAdult // для совместимости с is_child
 
       if (isChild && childCount >= 3 && !current.is_child) {
         alert('Максимум 3 детских билета')
@@ -170,7 +170,14 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
         return prev
       }
 
-      seats[currentIndex] = updated
+      seats[currentIndex] = {
+        ...current,
+        is_child: isChild,
+        person_info: {
+          ...current.person_info,
+          is_adult: isAdult,
+        },
+      }
 
       return {
         ...prev,

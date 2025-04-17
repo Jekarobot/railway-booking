@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './GenderAndBirthDate.module.css'
-import { ValidationError } from '../../../../shared/hooks/usePassengerValidation'
+import { ValidationError } from '../../../shared/hooks/usePassengerValidation'
 
 interface GenderAndBirthDateProps {
   gender: boolean

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styles from './DocumentInput.module.css'
-import { ValidationError } from '../../../../shared/hooks/usePassengerValidation'
+import { ValidationError } from '../../../shared/hooks/usePassengerValidation'
 
 interface DocumentInputProps {
   isSelectedPassport: boolean

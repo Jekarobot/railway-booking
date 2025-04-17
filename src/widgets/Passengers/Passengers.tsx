@@ -10,7 +10,7 @@ interface PassengersProps {
 }
 
 const Passengers: React.FC<PassengersProps> = ({ setActiveStep }) => {
-  const { order } = useOrder()
+  const { order, clearPrice } = useOrder()
 
   const [activePassenger, setActivePassenger] = useState([
     order.arrival?.seats?.find((seat) => seat.seat_id)?.seat_id ||
@@ -27,6 +27,7 @@ const Passengers: React.FC<PassengersProps> = ({ setActiveStep }) => {
   }
 
   const handleAddPassenger = () => {
+    clearPrice()
     setActiveStep(1)
   }
 

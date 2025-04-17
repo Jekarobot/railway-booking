@@ -5,6 +5,7 @@ import LastTickets from '../../../widgets/LastTickets/LastTickets'
 import TicketsList from '../../../widgets/TicketsList/TicketsList'
 import DetailsAside from '../../../widgets/DetailsAside/DetailsAside'
 import Passengers from '../../../widgets/Passengers/Passengers'
+import Billing from '../../../widgets/Billing/Billing'
 
 interface RenderStepProps {
   activeStep: number
@@ -53,7 +54,9 @@ const RenderStep: React.FC<RenderStepProps> = ({ activeStep, setActiveStep }) =>
           <aside className={`${styles.step3__aside} ${styles.aside}`}>
             <DetailsAside />
           </aside>
-          <main className={`${styles.main}`}>{/* <Billing /> */}</main>
+          <main className={`${styles.main}`}>
+            <Billing setActiveStep={setActiveStep} />
+          </main>
         </div>
       )
 

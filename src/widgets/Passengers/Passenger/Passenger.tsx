@@ -6,10 +6,10 @@ import plus from '../../../shared/assets/svg/Passenger/Plus.svg'
 import minus from '../../../shared/assets/svg/Passenger/Minus.svg'
 import cross from '../../../shared/assets/svg/Passenger/Cross.svg'
 import { usePassengerValidation } from '../../../shared/hooks/usePassengerValidation'
-import PassengerTypeSelect from './PassengerTypeSelect/PassengerTypeSelect'
-import NameInput from './NameInput/NameInput'
-import GenderAndBirthDate from './GenderAndBirthDate/GenderAndBirthDate'
-import DocumentInput from './DocumentInput/DocumentInput'
+import PassengerTypeSelect from '../../../entities/inputs/PassengerTypeSelect/PassengerTypeSelect'
+import NameInput from '../../../entities/inputs/NameInput/NameInput'
+import GenderAndBirthDate from '../../../entities/inputs/GenderAndBirthDate/GenderAndBirthDate'
+import DocumentInput from '../../../entities/inputs/DocumentInput/DocumentInput'
 import ErrorLogo from '../../../shared/assets/svg/ErrorLogo.svg'
 import AccessLogo from '../../../shared/assets/svg/AccessLogo.svg'
 
@@ -57,9 +57,9 @@ const Passenger = ({
   }
 
   const handleSelectChangeChild = (value: string) => {
-    const isChildValue = value === 'child'
-    setPassengerAge(isDeparture, seat.seat_id, isChildValue)
-    setIsAdult(isChildValue)
+    const isAdultValue = value === 'adult'
+    setPassengerAge(isDeparture, seat.seat_id, isAdultValue)
+    setIsAdult(isAdultValue)
   }
 
   const handleSelectChangeDocument = (value: boolean) => {

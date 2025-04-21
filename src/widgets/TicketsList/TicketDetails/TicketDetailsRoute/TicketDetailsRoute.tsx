@@ -46,22 +46,22 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
                 <TrainTicketSmall className={styles.trainTicketSmall} />
               </div>
               <div className={styles.trainInfo}>
-                <p className={styles.trainName}>{selectedTicket?.departure?.train?.name}</p>
+                <p className={styles.trainName}>{selectedTicket?.arrival?.train?.name}</p>
                 <div className={styles.destinationsGroup}>
-                  {selectedTicket?.departure?.from?.city?._id !== searchParams.from_city_id && (
+                  {selectedTicket?.arrival?.from?.city?._id !== searchParams.to_city_id && (
                     <p className={styles.firstArrivalCity}>
-                      {capitalizeCityName(selectedTicket?.departure?.from?.city?.name) ?? ''} &rarr;
+                      {capitalizeCityName(selectedTicket?.arrival?.from?.city?.name) ?? ''} &rarr;
                     </p>
                   )}
                   <p className={styles.arrivalCity}>
-                    {capitalizeCityName(searchParams.from_city_input)} &rarr;
+                    {capitalizeCityName(searchParams.to_city_input)} &rarr;
                   </p>
                   <p className={styles.destinationCity}>
-                    {capitalizeCityName(searchParams.to_city_input)}
+                    {capitalizeCityName(searchParams.from_city_input)}
                   </p>
-                  {selectedTicket?.departure?.to?.city?._id !== searchParams.to_city_id && (
+                  {selectedTicket?.arrival?.to?.city?._id !== searchParams.from_city_id && (
                     <p className={styles.lastDestinationCity}>
-                      &rarr; {capitalizeCityName(selectedTicket?.departure?.to?.city?.name) ?? ''}
+                      &rarr; {capitalizeCityName(selectedTicket?.arrival?.to?.city?.name) ?? ''}
                     </p>
                   )}
                 </div>
@@ -71,25 +71,25 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
               <div className={styles.arrivalDirection__from}>
                 <p className={styles.directions__landingTime}>
-                  {formatUnixTimestampToTime(selectedTicket?.departure.from.datetime)}
+                  {formatUnixTimestampToTime(selectedTicket?.arrival.from.datetime)}
                 </p>
                 <p className={styles.directions__city}>
-                  {capitalizeCityName(selectedTicket?.departure.from.city?.name)}
+                  {capitalizeCityName(selectedTicket?.arrival.from.city?.name)}
                 </p>
                 <p className={styles.directions__railway}>
-                  {selectedTicket?.departure.from.railway_station_name}
+                  {selectedTicket?.arrival.from.railway_station_name}
                 </p>
               </div>
               <img className={styles.directions__arrow} src={ArrowTicketLeft} alt="Arrow Left" />
               <div className={styles.arrivalDirection__to}>
                 <p className={styles.directions__landingTime}>
-                  {formatUnixTimestampToTime(selectedTicket?.departure.to.datetime)}
+                  {formatUnixTimestampToTime(selectedTicket?.arrival.to.datetime)}
                 </p>
                 <p className={styles.directions__city}>
-                  {capitalizeCityName(selectedTicket?.departure.to.city?.name)}
+                  {capitalizeCityName(selectedTicket?.arrival.to.city?.name)}
                 </p>
                 <p className={styles.directions__railway}>
-                  {selectedTicket?.departure.to.railway_station_name}
+                  {selectedTicket?.arrival.to.railway_station_name}
                 </p>
               </div>
             </div>
@@ -97,15 +97,12 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               <img src={Clock} className={styles.clock}></img>
               <div className={styles.duration__group}>
                 <p className={styles.duration__string}>
-                  {
-                    formatTimeToObject(formatSecondsToHHMM(selectedTicket?.departure.duration))
-                      .hours
-                  }{' '}
+                  {formatTimeToObject(formatSecondsToHHMM(selectedTicket?.arrival.duration)).hours}{' '}
                   часов
                 </p>
                 <p className={styles.duration__string}>
                   {
-                    formatTimeToObject(formatSecondsToHHMM(selectedTicket?.departure.duration))
+                    formatTimeToObject(formatSecondsToHHMM(selectedTicket?.arrival.duration))
                       .minutes
                   }{' '}
                   минут
@@ -118,6 +115,7 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
         </div>
       ) : (
         <div className={styles.arrivalTicketDetails}>
+          {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
           <div className={styles.btnHeadArrival}>
             <img className={styles.arrow} src={ArrowRight}></img>
             <button onClick={onBack} className={styles.onBack}>
@@ -152,7 +150,6 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               </div>
             </div>
             <div className={styles.directions}>
-              {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
               <div className={styles.arrivalDirection__from}>
                 <p className={styles.directions__landingTime}>
                   {formatUnixTimestampToTime(selectedTicket?.departure.from.datetime)}

@@ -73,7 +73,7 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
         arrival: { ...prev.arrival, ...updatedOrder.arrival },
       }
 
-      // console.log('Инфо о заказе:', newState)
+      console.log('Инфо о заказе:', newState)
 
       return newState
     })
@@ -233,8 +233,8 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
-    // console.log('Текущее состояние заказа:', order)
-    // console.log('Текущая цена:', price)
+    console.log('Текущее состояние заказа:', order)
+    console.log('Текущая цена:', price)
   }, [order, price])
 
   const handleOrderSubmission = async (): Promise<OrderApiResponse | null> => {

@@ -9,19 +9,24 @@ const PriceFilter: React.FC = () => {
   const { routesResponse, updateSearchParams } = useSearchContext()
 
   // Вычисляем начальные min и max цены
-  const { minPrice, maxPrice } = useMemo(() => {
-    if (!routesResponse?.items?.length) return { minPrice: 0, maxPrice: 10000 }
+  // const { minPrice, maxPrice } = useMemo(() => {
+  //   if (!routesResponse?.items?.length) return { minPrice: 0, maxPrice: 10000 }
 
-    let minPrice = routesResponse.items[0].min_price
-    let maxPrice = routesResponse.items[0].min_price
+  //   let minPrice = routesResponse.items[0].min_price
+  //   let maxPrice = routesResponse.items[0].min_price
 
-    routesResponse.items.forEach((item) => {
-      if (item.min_price < minPrice) minPrice = item.min_price
-      if (item.min_price > maxPrice) maxPrice = item.min_price
-    })
+  //   routesResponse.items.forEach((item) => {
+  //     if (item.min_price < minPrice) minPrice = item.min_price
+  //     if (item.min_price > maxPrice) maxPrice = item.min_price
+  //   })
 
-    return { minPrice, maxPrice }
-  }, [routesResponse?.items])
+  //   return { minPrice, maxPrice }
+  // }, [routesResponse?.items])
+
+  //К сожалению, эту логику я не смог заставить работать корректно, чтобы она не ломала поиск. Из-за того, что сервер возвращает ограниченное количество маршрутов, не хватает, чтобы он с кол-вом маршрутов возвращал диапазон цен вне массива.
+
+  const minPrice = 0
+  const maxPrice = 20000
 
   // Храним начальные значения min/max, чтобы не менять их при каждом ререндере
   const initialMinRef = useRef(minPrice)

@@ -1,7 +1,7 @@
 import styles from './HowItWorksSection.module.css'
 import PC from '../../shared/assets/svg/HowItWorks/PC.svg'
 import Building from '../../shared/assets/svg/HowItWorks/Building.svg'
-import World from '../../shared/assets/svg/HowItWorks/Building.svg'
+import World from '../../shared/assets/svg/HowItWorks/World.svg'
 import { usePopup } from '../../providers/PopupProvider/PopupContext'
 
 const AboutSection = () => {

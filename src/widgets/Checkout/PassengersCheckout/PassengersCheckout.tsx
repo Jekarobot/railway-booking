@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './PassengersCheckout.module.css'
 import PassengerIcon from '../../../shared/assets/svg/PassengerIcon.svg'
 import RubleIcon from '../../../shared/assets/svg/Ruble.svg'

@@ -18,7 +18,7 @@ const CoachFirstSeats: React.FC<CoachFirstSeatsProps> = ({
   coach,
   isDeparture,
 }) => {
-  console.log('Места:', seats)
+  // console.log('Места:', seats)
   const totalSeats = Array.from({ length: 16 }, (_, index) => index + 1)
 
   const { toggleSeat, isSeatSelected, price } = useOrder()

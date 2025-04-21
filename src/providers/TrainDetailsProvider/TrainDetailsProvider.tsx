@@ -26,14 +26,14 @@ export const TrainDetailsProvider: React.FC<{ children: React.ReactNode }> = ({ 
   const arrivalFetch = useRoutesSeatsApi(arrivalTrainId)
   const departureFetch = useRoutesSeatsApi(departureTrainId)
 
-  useEffect(() => {
-    console.log('SelectedTicket:', selectedTicket)
-  }, [selectedTicket])
+  // useEffect(() => {
+  //   console.log('SelectedTicket:', selectedTicket)
+  // }, [selectedTicket])
 
-  useEffect(() => {
-    console.log('TrainDetailsProvider: arrivalSeatsData', arrivalFetch.data)
-    console.log('TrainDetailsProvider: departureSeatsData', departureFetch.data)
-  }, [arrivalFetch.data, departureFetch.data])
+  // useEffect(() => {
+  //   console.log('TrainDetailsProvider: arrivalSeatsData', arrivalFetch.data)
+  //   console.log('TrainDetailsProvider: departureSeatsData', departureFetch.data)
+  // }, [arrivalFetch.data, departureFetch.data])
 
   return (
     <TrainDetailsContext.Provider

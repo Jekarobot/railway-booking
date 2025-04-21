@@ -29,7 +29,7 @@ export const GroupFilters: React.FC = () => {
   const { searchParams, updateSearchParams } = useSearchContext()
 
   const handleToggle = (id: keyof Routes) => {
-    console.log(`Toggling filter: ${id}, current value: ${searchParams[id]}`)
+    // console.log(`Toggling filter: ${id}, current value: ${searchParams[id]}`)
     updateSearchParams({ [id]: !searchParams[id] })
   }
 

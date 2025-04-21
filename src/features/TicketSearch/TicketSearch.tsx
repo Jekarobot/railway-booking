@@ -71,6 +71,15 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
     navigate('/results', { state: { searchParams, routesData } })
   }
 
+  const handleReverseClick = () => {
+    updateSearchParams({
+      from_city_input: searchParams.to_city_input,
+      from_city_id: searchParams.to_city_id,
+      to_city_input: searchParams.from_city_input,
+      to_city_id: searchParams.from_city_id,
+    })
+  }
+
   return (
     <div className={isWide ? styles.wideForm : styles.narrowForm}>
       {/* Блок "Направление" */}
@@ -112,7 +121,7 @@ const TicketSearch: React.FC<TicketSearchProps> = ({ isWide }) => {
           </div>
 
           <button className={styles.reverseButton}>
-            <img src={Reverse} alt="Reverse" />
+            <img src={Reverse} alt="Reverse" onClick={handleReverseClick} />
           </button>
 
           <div className={styles.inputGroup}>

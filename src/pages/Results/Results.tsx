@@ -6,11 +6,10 @@ import TicketSearch from '../../features/TicketSearch/TicketSearch'
 import ProgressBar from '../../shared/ui/ProgressBar/ProgressBar'
 import RenderStep from './RenderStep/RenderStep'
 import { useSearchContext } from '../../providers/SearchProvider/SearchContext'
-import mockTickets from '../../shared/mockData/mockTickets'
 
 const Results: React.FC = () => {
   const { loading } = useSearchContext()
-  const [step, setStep] = useState(loading ? 0 : 1) // Начальный шаг
+  const [step, setStep] = useState(loading ? 0 : 1)
 
   useEffect(() => {
     if (!loading && step === 0) {
@@ -27,8 +26,8 @@ const Results: React.FC = () => {
           <TicketSearch isWide={false} />
         </div>
       </header>
-      <ProgressBar activeStep={step} setActiveStep={setStep} />
-      <RenderStep activeStep={step} setActiveStep={setStep} tickets={mockTickets.items} />
+      <ProgressBar activeStep={step} />
+      <RenderStep activeStep={step} setActiveStep={setStep} />
       <Footer />
     </div>
   )

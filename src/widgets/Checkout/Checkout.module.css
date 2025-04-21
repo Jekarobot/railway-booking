@@ -1,0 +1,94 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.headerContainer {
+  width: 960px;
+  height: 95px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  box-sizing: border-box;
+
+  border-top: 1px #c4c4c4 solid;
+  border-left: 1px solid #c4c4c4;
+  border-right: 1px solid #c4c4c4;
+  box-shadow: 0px 2px 2px 0px #0000004d;
+}
+
+.header {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.paymentContainer {
+  height: 146px;
+  background-color: #ffffff;
+
+  display: flex;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0px 2px 2px 0px #0000004d;
+}
+
+.paymentMethodContainer {
+  width: 680px;
+  border-right: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 33px;
+}
+
+.paymentMethod {
+  font-weight: 400;
+  font-size: 24px;
+  color: #292929;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 279px;
+  padding-bottom: 21px;
+}
+.returnButton {
+  width: 233px;
+  height: 39px;
+  border: 1px solid #292929;
+
+  font-weight: 700;
+  font-size: 24px;
+  color: #292929;
+}
+
+.returnButton:hover {
+  color: #ffa800;
+}
+
+.returnButton:active {
+  background-color: #ffa800;
+  color: #292929;
+}
+
+.uploadBtn {
+  width: 222px;
+  height: 60px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px transparent solid;
+  margin-left: 740px;
+  margin-top: 100px;
+  background-color: #ffa800;
+}
+
+.uploadBtn:active {
+  background-color: transparent;
+  color: #ffa800;
+  border: 1px #ffa800 solid;
+}

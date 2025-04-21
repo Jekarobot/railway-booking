@@ -21,8 +21,7 @@ const TicketsList: React.FC<TicketsListProps> = ({ setActiveStep }) => {
     departureTrainId,
     setArrivalTrainId,
     setDepartureTrainId,
-    setSelectedArrivalTicket,
-    setSelectedDepartureTicket,
+    setSelectedTicket,
   } = useTrainDetails()
   const { updateOrder, clearPrice } = useOrder()
   const [currentPage, setCurrentPage] = useState(1)
@@ -46,23 +45,37 @@ const TicketsList: React.FC<TicketsListProps> = ({ setActiveStep }) => {
   }
 
   const handleSelectTicket = (ticket: RouteItem) => {
-    // Проверка на наличие departure и arrival
-    if (ticket.departure && ticket.departure._id) {
-      // Тут из-за бага сервера id умышленно поменяны места
+    setSelectedTicket(ticket)
+
+    const hasDeparture = ticket.departure && ticket.departure._id
+    const hasArrival = ticket.arrival && ticket.arrival._id
+
+    if (hasDeparture && hasArrival) {
+      // Всё в порядке, обе стороны есть
+      setDepartureTrainId(ticket.departure._id)
+      setArrivalTrainId(ticket.arrival._id)
+      updateOrder({
+        departure: {
+          route_direction_id: ticket.departure._id,
+          seats: [],
+        },
+        arrival: {
+          route_direction_id: ticket.arrival._id,
+          seats: [],
+        },
+      })
+    } else if (hasDeparture) {
+      // Сервер перепутал, и тут вместо departure реально arrival
       setArrivalTrainId(ticket.departure._id)
-      setSelectedArrivalTicket(ticket)
       updateOrder({
         arrival: {
           route_direction_id: ticket.departure._id,
           seats: [],
         },
       })
-    }
-
-    if (ticket.arrival && ticket.arrival._id) {
-      // Для теста комментить это и раскоментить 3-й блок
+    } else if (hasArrival) {
+      // Сервер перепутал, и тут вместо arrival реально departure
       setDepartureTrainId(ticket.arrival._id)
-      setSelectedDepartureTicket(ticket)
       updateOrder({
         departure: {
           route_direction_id: ticket.arrival._id,
@@ -70,19 +83,8 @@ const TicketsList: React.FC<TicketsListProps> = ({ setActiveStep }) => {
         },
       })
     }
-
-    // if (ticket.departure && ticket.departure._id) {
-    //   //Тестовый блок
-    //   setDepartureTrainId(ticket.departure._id)
-    //   setSelectedDepartureTicket(ticket)
-    //   updateOrder({
-    //     departure: {
-    //       route_direction_id: ticket.departure._id,
-    //       seats: [],
-    //     },
-    //   })
-    // }
   }
+
   return (
     <div className={styles.ticketsList}>
       {isRouteSelected ? (
@@ -92,8 +94,7 @@ const TicketsList: React.FC<TicketsListProps> = ({ setActiveStep }) => {
             setIsRouteSelected(false)
             setArrivalTrainId('')
             setDepartureTrainId('')
-            setSelectedArrivalTicket(null)
-            setSelectedDepartureTicket(null)
+            setSelectedTicket(null)
             clearPrice()
             updateOrder({
               departure: {

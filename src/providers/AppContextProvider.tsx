@@ -3,7 +3,7 @@ import { SearchProvider } from './SearchProvider/SearchContext'
 import { TrainDetailsProvider } from './TrainDetailsProvider/TrainDetailsProvider'
 import { OrderProvider } from './OrderBuildProvider/OrderContext'
 import { PopupProvider } from './PopupProvider/PopupContext'
-import { CustomAlert } from '../features/popups/CustomPopup'
+import { CustomAlert } from '../features/Popup/CustomPopup'
 
 const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (

@@ -1,0 +1,59 @@
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
+  width: 100%;
+  background-color: #3e3c41;
+}
+
+.loadingBar {
+  width: 50%;
+  height: 50px; /* Увеличьте высоту для отображения изображений */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.train {
+  position: absolute;
+  width: 287px; /* Ширина изображения поезда */
+  height: 15px; /* Высота изображения поезда */
+  animation: trainAnimation 1.5s infinite linear;
+}
+
+.rails {
+  position: absolute;
+  right: 0;
+  width: 287px; /* Ширина изображения рельсов */
+  height: 2px; /* Высота изображения рельсов */
+  background: #fcdc9d;
+  background-size: contain;
+  animation: railsAnimation 1.5s infinite linear;
+  top: 20px;
+}
+
+@keyframes trainAnimation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes railsAnimation {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.loadingText {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #666;
+}

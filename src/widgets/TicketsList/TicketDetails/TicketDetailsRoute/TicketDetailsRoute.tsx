@@ -23,7 +23,7 @@ interface TicketDetailsRouteProps {
 
 const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, onBack }) => {
   const { searchParams } = useSearchContext()
-  const { selectedArrivalTicket, selectedDepartureTicket } = useTrainDetails()
+  const { selectedTicket } = useTrainDetails()
 
   const formatTimeToObject = (time: string): { hours: number; minutes: number } => {
     const [hours, minutes] = time.split(':').map(Number)
@@ -46,16 +46,11 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
                 <TrainTicketSmall className={styles.trainTicketSmall} />
               </div>
               <div className={styles.trainInfo}>
-                <p className={styles.trainName}>
-                  {selectedDepartureTicket?.departure?.train?.name}
-                </p>
+                <p className={styles.trainName}>{selectedTicket?.departure?.train?.name}</p>
                 <div className={styles.destinationsGroup}>
-                  {selectedDepartureTicket?.departure?.from?.city?._id !==
-                    searchParams.from_city_id && (
+                  {selectedTicket?.departure?.from?.city?._id !== searchParams.from_city_id && (
                     <p className={styles.firstArrivalCity}>
-                      {capitalizeCityName(selectedDepartureTicket?.departure?.from?.city?.name) ??
-                        ''}{' '}
-                      &rarr;
+                      {capitalizeCityName(selectedTicket?.departure?.from?.city?.name) ?? ''} &rarr;
                     </p>
                   )}
                   <p className={styles.arrivalCity}>
@@ -64,11 +59,9 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
                   <p className={styles.destinationCity}>
                     {capitalizeCityName(searchParams.to_city_input)}
                   </p>
-                  {selectedDepartureTicket?.departure?.to?.city?._id !==
-                    searchParams.to_city_id && (
+                  {selectedTicket?.departure?.to?.city?._id !== searchParams.to_city_id && (
                     <p className={styles.lastDestinationCity}>
-                      &rarr;{' '}
-                      {capitalizeCityName(selectedDepartureTicket?.departure?.to?.city?.name) ?? ''}
+                      &rarr; {capitalizeCityName(selectedTicket?.departure?.to?.city?.name) ?? ''}
                     </p>
                   )}
                 </div>
@@ -78,25 +71,25 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
               <div className={styles.arrivalDirection__from}>
                 <p className={styles.directions__landingTime}>
-                  {formatUnixTimestampToTime(selectedDepartureTicket?.departure.from.datetime)}
+                  {formatUnixTimestampToTime(selectedTicket?.departure.from.datetime)}
                 </p>
                 <p className={styles.directions__city}>
-                  {capitalizeCityName(selectedDepartureTicket?.departure.from.city?.name)}
+                  {capitalizeCityName(selectedTicket?.departure.from.city?.name)}
                 </p>
                 <p className={styles.directions__railway}>
-                  {selectedDepartureTicket?.departure.from.railway_station_name}
+                  {selectedTicket?.departure.from.railway_station_name}
                 </p>
               </div>
               <img className={styles.directions__arrow} src={ArrowTicketLeft} alt="Arrow Left" />
               <div className={styles.arrivalDirection__to}>
                 <p className={styles.directions__landingTime}>
-                  {formatUnixTimestampToTime(selectedDepartureTicket?.departure.to.datetime)}
+                  {formatUnixTimestampToTime(selectedTicket?.departure.to.datetime)}
                 </p>
                 <p className={styles.directions__city}>
-                  {capitalizeCityName(selectedDepartureTicket?.departure.to.city?.name)}
+                  {capitalizeCityName(selectedTicket?.departure.to.city?.name)}
                 </p>
                 <p className={styles.directions__railway}>
-                  {selectedDepartureTicket?.departure.to.railway_station_name}
+                  {selectedTicket?.departure.to.railway_station_name}
                 </p>
               </div>
             </div>
@@ -105,17 +98,15 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               <div className={styles.duration__group}>
                 <p className={styles.duration__string}>
                   {
-                    formatTimeToObject(
-                      formatSecondsToHHMM(selectedDepartureTicket?.departure.duration)
-                    ).hours
+                    formatTimeToObject(formatSecondsToHHMM(selectedTicket?.departure.duration))
+                      .hours
                   }{' '}
                   часов
                 </p>
                 <p className={styles.duration__string}>
                   {
-                    formatTimeToObject(
-                      formatSecondsToHHMM(selectedDepartureTicket?.departure.duration)
-                    ).minutes
+                    formatTimeToObject(formatSecondsToHHMM(selectedTicket?.departure.duration))
+                      .minutes
                   }{' '}
                   минут
                 </p>
@@ -139,13 +130,11 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
                 <TrainTicketSmall className={styles.trainTicketSmall} />
               </div>
               <div className={styles.trainInfo}>
-                <p className={styles.trainName}>{selectedArrivalTicket?.departure?.train?.name}</p>
+                <p className={styles.trainName}>{selectedTicket?.departure?.train?.name}</p>
                 <div className={styles.destinationsGroup}>
-                  {selectedArrivalTicket?.departure?.from?.city?._id !==
-                    searchParams.from_city_id && (
+                  {selectedTicket?.departure?.from?.city?._id !== searchParams.from_city_id && (
                     <p className={styles.firstArrivalCity}>
-                      {capitalizeCityName(selectedArrivalTicket?.departure?.from?.city?.name) ?? ''}{' '}
-                      &rarr;
+                      {capitalizeCityName(selectedTicket?.departure?.from?.city?.name) ?? ''} &rarr;
                     </p>
                   )}
                   <p className={styles.arrivalCity}>
@@ -154,10 +143,9 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
                   <p className={styles.destinationCity}>
                     {capitalizeCityName(searchParams.to_city_input)}
                   </p>
-                  {selectedArrivalTicket?.departure?.to?.city?._id !== searchParams.to_city_id && (
+                  {selectedTicket?.departure?.to?.city?._id !== searchParams.to_city_id && (
                     <p className={styles.lastDestinationCity}>
-                      &rarr;{' '}
-                      {capitalizeCityName(selectedArrivalTicket?.departure?.to?.city?.name) ?? ''}
+                      &rarr; {capitalizeCityName(selectedTicket?.departure?.to?.city?.name) ?? ''}
                     </p>
                   )}
                 </div>
@@ -167,25 +155,25 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               {/* Тут в данных тоже перепутаны местами departure и arrival из-за бага сервера */}
               <div className={styles.arrivalDirection__from}>
                 <p className={styles.directions__landingTime}>
-                  {formatUnixTimestampToTime(selectedArrivalTicket?.departure.from.datetime)}
+                  {formatUnixTimestampToTime(selectedTicket?.departure.from.datetime)}
                 </p>
                 <p className={styles.directions__city}>
-                  {capitalizeCityName(selectedArrivalTicket?.departure.from.city?.name)}
+                  {capitalizeCityName(selectedTicket?.departure.from.city?.name)}
                 </p>
                 <p className={styles.directions__railway}>
-                  {selectedArrivalTicket?.departure.from.railway_station_name}
+                  {selectedTicket?.departure.from.railway_station_name}
                 </p>
               </div>
               <img className={styles.directions__arrow} src={ArrowTicketRight} alt="Arrow Right" />
               <div className={styles.arrivalDirection__to}>
                 <p className={styles.directions__landingTime}>
-                  {formatUnixTimestampToTime(selectedArrivalTicket?.departure.to.datetime)}
+                  {formatUnixTimestampToTime(selectedTicket?.departure.to.datetime)}
                 </p>
                 <p className={styles.directions__city}>
-                  {capitalizeCityName(selectedArrivalTicket?.departure.to.city?.name)}
+                  {capitalizeCityName(selectedTicket?.departure.to.city?.name)}
                 </p>
                 <p className={styles.directions__railway}>
-                  {selectedArrivalTicket?.departure.to.railway_station_name}
+                  {selectedTicket?.departure.to.railway_station_name}
                 </p>
               </div>
             </div>
@@ -194,17 +182,15 @@ const TicketDetailsRoute: React.FC<TicketDetailsRouteProps> = ({ isDeparture, on
               <div className={styles.duration__group}>
                 <p className={styles.duration__string}>
                   {
-                    formatTimeToObject(
-                      formatSecondsToHHMM(selectedArrivalTicket?.departure.duration)
-                    ).hours
+                    formatTimeToObject(formatSecondsToHHMM(selectedTicket?.departure.duration))
+                      .hours
                   }{' '}
                   часов
                 </p>
                 <p className={styles.duration__string}>
                   {
-                    formatTimeToObject(
-                      formatSecondsToHHMM(selectedArrivalTicket?.departure.duration)
-                    ).minutes
+                    formatTimeToObject(formatSecondsToHHMM(selectedTicket?.departure.duration))
+                      .minutes
                   }{' '}
                   минут
                 </p>

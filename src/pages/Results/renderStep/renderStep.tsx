@@ -6,22 +6,18 @@ import TicketsList from '../../../widgets/TicketsList/TicketsList'
 import DetailsAside from '../../../widgets/DetailsAside/DetailsAside'
 import Passengers from '../../../widgets/Passengers/Passengers'
 import Billing from '../../../widgets/Billing/Billing'
+import Checkout from '../../../widgets/Checkout/Checkout'
+import Loader from '../../../features/Loader/Loader'
 
 interface RenderStepProps {
   activeStep: number
   setActiveStep: (step: number) => void
-  tickets: any[]
 }
 
 const RenderStep: React.FC<RenderStepProps> = ({ activeStep, setActiveStep }) => {
   switch (activeStep) {
     case 0:
-      return (
-        <div className={styles.loadingContainer}>
-          <div className={styles.loadingBar}></div>
-          <p className={styles.loadingText}>Загружаем маршруты...</p>
-        </div>
-      )
+      return <Loader />
 
     case 1:
       return (
@@ -56,6 +52,18 @@ const RenderStep: React.FC<RenderStepProps> = ({ activeStep, setActiveStep }) =>
           </aside>
           <main className={`${styles.main}`}>
             <Billing setActiveStep={setActiveStep} />
+          </main>
+        </div>
+      )
+
+    case 4:
+      return (
+        <div className={`${styles.step3} ${styles.step}`}>
+          <aside className={`${styles.step3__aside} ${styles.aside}`}>
+            <DetailsAside />
+          </aside>
+          <main className={`${styles.main}`}>
+            <Checkout setActiveStep={setActiveStep} />
           </main>
         </div>
       )

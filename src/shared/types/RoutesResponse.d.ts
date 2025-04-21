@@ -1,5 +1,4 @@
 export interface RouteItem {
-  description: string // Направление («туда« или «туда и обратно«)
   have_first_class: boolean // В поезде есть вагон класса «Люкс» (СВ)
   have_second_class: boolean // В поезде есть вагон класса «Купе»
   have_third_class: boolean // В поезде есть вагон класса «Плацкарт»

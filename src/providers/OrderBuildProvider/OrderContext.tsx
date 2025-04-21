@@ -1,6 +1,8 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { TicketDetails, Seat } from '../../shared/types/Order'
 import { usePopup } from '../PopupProvider/PopupContext'
+import useOrderApi from '../../shared/API/orderAPI'
+import { getRequestBody } from '../../shared/hooks/getRequestBody'
 
 interface OrderContextType {
   order: TicketDetails
@@ -17,6 +19,15 @@ interface OrderContextType {
   isSeatSelected: (seat_number: number, coach_id: string, isDeparture: boolean) => boolean
   setPassengerAge: (isDeparture: boolean, id: string, isChild: boolean) => void
   removePassenger: (isDeparture: boolean, seat_id: string) => void
+  handleOrderSubmission: () => Promise<OrderApiResponse | null>
+  requestData: {
+    status: boolean
+  }
+  loading: boolean
+}
+
+interface OrderApiResponse {
+  status: boolean
 }
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined)
@@ -44,6 +55,9 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
   const { setShowPopup, setContent, setHeader, setPopupType } = usePopup()
 
   const [price, setPrice] = useState(0)
+  const [requestData, setRequestData] = useState({ status: false })
+
+  const { loading, triggerRequest } = useOrderApi()
 
   const updateOrder = (
     newOrder: Partial<TicketDetails> | ((prev: TicketDetails) => TicketDetails)
@@ -223,6 +237,20 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
     console.log('Текущая цена:', price)
   }, [order, price])
 
+  const handleOrderSubmission = async (): Promise<OrderApiResponse | null> => {
+    const result = await triggerRequest(getRequestBody(order))
+
+    if (result?.status) {
+      setRequestData(result)
+    } else {
+      setPopupType('error')
+      setHeader('Ошибка при отправке данных')
+      setContent('Не получили ответ от сервера, попробуйте ещё раз')
+      setShowPopup(true)
+    }
+    return result
+  }
+
   return (
     <OrderContext.Provider
       value={{
@@ -236,6 +264,9 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
         isSeatSelected,
         setPassengerAge,
         removePassenger,
+        handleOrderSubmission,
+        requestData,
+        loading,
       }}
     >
       {children}

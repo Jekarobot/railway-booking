@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './SeatInfo.module.css'
-import RubleIcon from '../../../../../shared/assets/svg/Ruble.svg'
+import RubleIcon from '../../../shared/assets/svg/Ruble.svg'
 
 interface SeatInfoProps {
   className: string

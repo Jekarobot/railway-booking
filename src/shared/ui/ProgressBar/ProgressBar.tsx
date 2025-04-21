@@ -3,7 +3,6 @@ import styles from './ProgressBar.module.css'
 
 interface RenderStepProps {
   activeStep: number
-  setActiveStep: (step: number) => void
 }
 
 const ProgressBar: React.FC<RenderStepProps> = ({ activeStep }) => {

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useSubscribeApi } from '../../../shared/API/subscribeAPI'
+import { usePopup } from '../../../providers/PopupProvider/PopupContext'
 import styles from './Footer.module.css'
 import Phone from '../../assets/svg/Footer/Phone.svg'
 import Mail from '../../assets/svg/Footer/Mail.svg'
@@ -13,12 +15,24 @@ import ToTop from '../../assets/svg/Footer/ToTop.svg'
 
 const Footer = () => {
   const [email, setEmail] = useState('')
+  const { setContent, setHeader, setPopupType, setShowPopup } = usePopup()
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Моковая логика обработки формы
-    console.log('Email:', email)
-    alert(`Подписка оформлена для: ${email}`)
+
+    const response = await useSubscribeApi('email')
+
+    if (response) {
+      setShowPopup(true)
+      setHeader(`Подписка успешна для ${email}`)
+      setContent('Вы успешно подписаны на обновления')
+      setPopupType('info')
+    } else {
+      setShowPopup(true)
+      setHeader('Ошибка подписки')
+      setContent('Пожалуйста, проверьте введенную почту и попробуйте снова')
+      setPopupType('error')
+    }
   }
 
   return (

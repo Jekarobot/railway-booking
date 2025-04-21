@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import styles from './TicketsResultPages.module.css'
-import TrainCard from './TrainCard/TrainCard'
+import TrainCard from '../../../entities/TrainCard/TrainCard'
 import { RouteItem } from '../../../shared/types/RoutesResponse'
 import { usePopup } from '../../../providers/PopupProvider/PopupContext'
 
@@ -25,7 +25,12 @@ const TicketsResultPages: React.FC<TicketsResultPagesProps> = ({ tickets, onSele
     <div className={styles.ticketsResultPages}>
       {tickets ? (
         tickets.map((ticket, index) => (
-          <TrainCard key={index} {...ticket} onSelect={() => onSelectTicket(ticket)} />
+          <TrainCard
+            key={index}
+            buttonType="selectSeats"
+            ticket={ticket}
+            onSelect={() => onSelectTicket(ticket)}
+          />
         ))
       ) : (
         <p>Нет доступных маршрутов</p>

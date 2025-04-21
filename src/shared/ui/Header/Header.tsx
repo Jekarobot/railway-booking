@@ -1,11 +1,14 @@
 import React from 'react'
 import styles from './Header.module.css'
 import { useNavigate } from 'react-router-dom'
+import { useSearchContext } from '../../../providers/SearchProvider/SearchContext'
 
 const Header: React.FC = () => {
   const navigate = useNavigate()
+  const { resetSearchParameters } = useSearchContext()
 
   const handleLogoClick = () => {
+    resetSearchParameters()
     navigate('/')
   }
 

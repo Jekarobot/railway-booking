@@ -1,54 +1,94 @@
-# React + TypeScript + Vite
+# 🚂 Railway Booking
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Railway Booking** — это веб-приложение для поиска и бронирования железнодорожных билетов. Проект предоставляет удобный интерфейс для выбора маршрута, просмотра доступных поездов, выбора мест и оформления заказа.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧰 Технологический стек
 
-## Expanding the ESLint configuration
+- **Язык**: TypeScript
+- **Фреймворк**: React 18
+- **Сборщик**: Vite
+- **Стилизация**: CSS / CSS Modules
+- **Линтер**: ESLint (с конфигурацией для TypeScript и React)
+- **Дополнительно**: React Context API, кастомные хуки, моковые данные
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 Установка и запуск
+
+1. **Клонируйте репозиторий:**
+   ```bash
+   git clone https://github.com/your-username/railway-booking.git
+   cd railway-booking
+   ```
+
+2. **Установите зависимости:**
+   ```bash
+   npm install
+   ```
+
+3. **Запустите проект в режиме разработки:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Откройте в браузере:**
+   ```
+   http://localhost:5173
+   ```
+
+---
+
+## 📦 Примеры использования
+
+### Поиск билетов
+```tsx
+// Пример использования компонента поиска
+import { TicketSearch } from './features/TicketSearch';
+
+function App() {
+  return <TicketSearch />;
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Получение списка поездов (моковые данные)
+```tsx
+import { useTrains } from './shared/hooks/useTrains';
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+function TrainList() {
+  const { trains, loading } = useTrains();
+  if (loading) return <Loader />;
+  return trains.map(train => <TrainCard key={train.id} train={train} />);
+}
 ```
+
+---
+
+## 📁 Структура проекта
+
+```
+railway-booking/
+├── public/                     # Статические файлы
+├── src/
+│   ├── app/                    # Корневые компоненты приложения
+│   ├── entities/               # Бизнес-сущности (TrainCard, filters, inputs)
+│   ├── features/               # Функциональные блоки (Calendar, Loader, Popup, Slider, TicketSearch)
+│   ├── pages/                  # Страницы (Home, Results, Success)
+│   ├── providers/              # Провайдеры контекста (AppContext, OrderBuild, Popup, Search, TrainDetails)
+│   ├── shared/                 # Переиспользуемые модули (API, хуки, стили, типы, UI-компоненты)
+│   ├── widgets/                # Составные виджеты (AboutSection, Billing, Checkout, DetailsAside, FilterAside, LastTickets, Passengers, TicketsList)
+│   ├── main.tsx                # Точка входа
+│   └── vite-env.d.ts           # Типы Vite
+├── index.html                  # HTML-шаблон
+├── package.json                # Зависимости и скрипты
+├── vite.config.ts              # Конфигурация Vite
+├── tsconfig.json               # Конфигурация TypeScript
+└── eslint.config.js            # Конфигурация ESLint
+```
+
+---
+
+## 📄 Лицензия
+
+Этот проект распространяется под лицензией **MIT**. Подробнее см. в файле `LICENSE`.
